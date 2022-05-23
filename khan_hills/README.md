@@ -1,6 +1,6 @@
 # khan_hills
 
-A new Flutter project.
+A new hustle.
 
 ## Getting Started
 
