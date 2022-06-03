@@ -2,16 +2,26 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final PageController _pageController = PageController();
+  final CarouselController _carouselController = CarouselController();
   int currentIndex = 0;
+  int carouselIndex = 0;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +50,31 @@ class _HomeState extends State<Home> {
               )),
         ],
       ),
+
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             margin: EdgeInsets.only(
                 left: size.width * .05, right: size.width * .05),
             child: CarouselSlider(
+              carouselController: _carouselController,
               options: CarouselOptions(
                 viewportFraction: 1,
                 enableInfiniteScroll: true,
-                height: size.height * .2,
+                height: size.height * .25,
                 autoPlayInterval: const Duration(seconds: 3),
                 autoPlay: true,
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
               ),
-              items: [1, 2, 3, 4, 5].map((i) {
+              items: [1.0, 2.0, 3.0, 4.0, 5.0].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: size.width,
+                        height: size.height * .2,
                         decoration: BoxDecoration(
-                            color: Colors.amber,
+                            border: Border.all(color: Colors.black, width: 1),
                             borderRadius: BorderRadius.circular(10)),
                         child: Text('text $i'));
                   },
@@ -68,8 +82,25 @@ class _HomeState extends State<Home> {
               }).toList(),
             ),
           ),
+          SmoothPageIndicator(
+            controller: _pageController,
+            count: 4,
+            effect: const WormEffect(),
+            onDotClicked: (index) {
+              setState(() {
+                Future.delayed(const Duration(milliseconds: 500), () {
+                  setState(() {
+                    print("gg");
+                    // _pageController.initialPage = 2;
+                  });
+                });
+              });
+            },
+          )
         ],
       ),
+
+      //! bottom navbar
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -77,7 +108,7 @@ class _HomeState extends State<Home> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 5), // changes position of shadow
+              offset: const Offset(0, 5),
             ),
           ],
         ),
@@ -118,3 +149,10 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+List<Widget> _demo = [
+  Container(height: 300, color: Colors.amber),
+  Container(height: 300, color: Colors.black),
+  Container(height: 300, color: Colors.blue),
+  Container(height: 300, color: Colors.green),
+];
