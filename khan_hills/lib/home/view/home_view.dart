@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 5), // changes position of shadow
+              offset: const Offset(0, 5),
             ),
           ],
         ),
@@ -94,21 +95,33 @@ class _HomeState extends State<Home> {
               currentIndex = index;
             }),
             currentIndex: currentIndex,
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_home.svg",
+                  color: currentIndex == 0 ? primaryColor : Colors.grey,
+                ),
                 label: "Нүүр",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_aboud_us.svg",
+                  color: currentIndex == 1 ? primaryColor : Colors.grey,
+                ),
                 label: "Бидний тухай",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_material.svg",
+                  color: currentIndex == 2 ? primaryColor : Colors.grey,
+                ),
                 label: "Материал",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_contact.svg",
+                  color: currentIndex == 3 ? primaryColor : Colors.grey,
+                ),
                 label: "Холбоо барих",
               ),
             ],
