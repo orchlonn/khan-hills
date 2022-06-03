@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -125,21 +126,33 @@ class _HomeState extends State<Home> {
               currentIndex = index;
             }),
             currentIndex: currentIndex,
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_home.svg",
+                  color: currentIndex == 0 ? primaryColor : Colors.grey,
+                ),
                 label: "Нүүр",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_aboud_us.svg",
+                  color: currentIndex == 1 ? primaryColor : Colors.grey,
+                ),
                 label: "Бидний тухай",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_material.svg",
+                  color: currentIndex == 2 ? primaryColor : Colors.grey,
+                ),
                 label: "Материал",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: SvgPicture.asset(
+                  "assets/images/icon_contact.svg",
+                  color: currentIndex == 3 ? primaryColor : Colors.grey,
+                ),
                 label: "Холбоо барих",
               ),
             ],
