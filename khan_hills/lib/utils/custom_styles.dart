@@ -10,4 +10,13 @@ extension CustomStyles on TextTheme {
       fontWeight: FontWeight.w800,
     );
   }
+
+  static TextStyle textSmallSemiBold(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+    );
+  }
 }

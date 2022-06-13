@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:khan_hills/home/components/carousel_slider.dart';
+import 'package:khan_hills/home/components/choose_block.dart';
+import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,159 +15,134 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final PageController _pageController = PageController();
   final CarouselController _carouselController = CarouselController();
   int currentIndex = 0;
-  int carouselIndex = 0;
 
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: whiteColor,
-        elevation: 0,
-        leadingWidth: size.width * .15,
-        leading: Container(
-          margin: EdgeInsets.only(left: size.width * .05),
-          child: Image.asset(
-            "assets/images/img_mongolia.png",
-          ),
+    return Stack(
+      children: [
+        Container(
+          color: bgColor,
+          width: size.width,
+          height: size.height,
         ),
-        title: Text(
-          "Khan Hills",
-          style: CustomStyles.textMediumBold(context),
+        Image.asset(
+          "assets/images/murui_bg.png",
+          width: size.width,
+          height: size.height,
         ),
-        actions: [
-          Container(
-              margin: EdgeInsets.only(right: size.width * .05),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leadingWidth: size.width * .15,
+            leading: Container(
+              margin: EdgeInsets.only(left: size.width * .05),
               child: Image.asset(
-                "assets/images/notification.png",
-                width: size.width * .1,
-              )),
-        ],
-      ),
-
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(
-                left: size.width * .05, right: size.width * .05),
-            child: CarouselSlider(
-              carouselController: _carouselController,
-              options: CarouselOptions(
-                viewportFraction: 1,
-                enableInfiniteScroll: true,
-                height: size.height * .25,
-                autoPlayInterval: const Duration(seconds: 3),
-                autoPlay: true,
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                "assets/images/img_mongolia.png",
               ),
-              items: [1.0, 2.0, 3.0, 4.0, 5.0].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: size.width,
-                        height: size.height * .2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 1),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text('text $i'));
-                  },
-                );
-              }).toList(),
             ),
-          ),
-          SmoothPageIndicator(
-            controller: _pageController,
-            count: 4,
-            effect: const WormEffect(),
-            onDotClicked: (index) {
-              setState(() {
-                Future.delayed(const Duration(milliseconds: 500), () {
-                  setState(() {
-                    print("gg");
-                    // _pageController.initialPage = 2;
-                  });
-                });
-              });
-            },
-          )
-        ],
-      ),
-
-      //! bottom navbar
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 5),
+            title: Text(
+              "Khan Hills",
+              style: CustomStyles.textMediumBold(context),
             ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(22.0),
-            topRight: Radius.circular(22.0),
-          ),
-          child: BottomNavigationBar(
-            selectedItemColor: primaryColor,
-            showSelectedLabels: true,
-            unselectedItemColor: Colors.grey,
-            onTap: (index) => setState(() {
-              currentIndex = index;
-            }),
-            currentIndex: currentIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/icon_home.svg",
-                  color: currentIndex == 0 ? primaryColor : Colors.grey,
-                ),
-                label: "Нүүр",
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/icon_aboud_us.svg",
-                  color: currentIndex == 1 ? primaryColor : Colors.grey,
-                ),
-                label: "Бидний тухай",
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/icon_material.svg",
-                  color: currentIndex == 2 ? primaryColor : Colors.grey,
-                ),
-                label: "Материал",
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/icon_contact.svg",
-                  color: currentIndex == 3 ? primaryColor : Colors.grey,
-                ),
-                label: "Холбоо барих",
-              ),
+            actions: [
+              Container(
+                  margin: EdgeInsets.only(right: size.width * .05),
+                  child: Image.asset(
+                    "assets/images/notification.png",
+                    width: size.width * .1,
+                  )),
             ],
           ),
+
+          body: Container(
+            margin: EdgeInsets.only(
+                left: size.width * .05, right: size.width * .05),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // header
+                CarouselSliderPage(carouselController: _carouselController),
+                Row(
+                  children: const [
+                    ChooseBlock(),
+                    Spacer(),
+                    OutsideButton(),
+                  ],
+                )
+              ],
+            ),
+          ),
+
+          //! bottom navbar
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(22.0),
+                topRight: Radius.circular(22.0),
+              ),
+              child: BottomNavigationBar(
+                selectedItemColor: primaryColor,
+                showSelectedLabels: true,
+                unselectedItemColor: Colors.grey,
+                onTap: (index) => setState(() {
+                  currentIndex = index;
+                }),
+                currentIndex: currentIndex,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/images/icon_home.svg",
+                      color: currentIndex == 0 ? primaryColor : Colors.grey,
+                    ),
+                    label: "Нүүр",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/images/icon_aboud_us.svg",
+                      color: currentIndex == 1 ? primaryColor : Colors.grey,
+                    ),
+                    label: "Бидний тухай",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/images/icon_material.svg",
+                      color: currentIndex == 2 ? primaryColor : Colors.grey,
+                    ),
+                    label: "Материал",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/images/icon_contact.svg",
+                      color: currentIndex == 3 ? primaryColor : Colors.grey,
+                    ),
+                    label: "Холбоо барих",
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
-
-List<Widget> _demo = [
-  Container(height: 300, color: Colors.amber),
-  Container(height: 300, color: Colors.black),
-  Container(height: 300, color: Colors.blue),
-  Container(height: 300, color: Colors.green),
-];

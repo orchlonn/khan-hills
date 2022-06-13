@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  carousel_indicator:
+    dependency: "direct main"
+    description:
+      name: carousel_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6"
   carousel_slider:
     dependency: "direct main"
     description:
@@ -88,6 +95,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_toggle_tab:
+    dependency: "direct main"
+    description:
+      name: flutter_toggle_tab
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   lints:
     dependency: transitive
     description:
@@ -149,13 +163,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  smooth_page_indicator:
-    dependency: "direct main"
-    description:
-      name: smooth_page_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0+2"
   source_span:
     dependency: transitive
     description:
