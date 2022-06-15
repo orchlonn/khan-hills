@@ -20,7 +20,7 @@ class CarouselSliderPage extends StatelessWidget {
       options: CarouselOptions(
         viewportFraction: 1,
         enableInfiniteScroll: true,
-        height: size.height * .25,
+        height: size.height * .2,
         autoPlayInterval: const Duration(seconds: 3),
         autoPlay: true,
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
@@ -32,7 +32,7 @@ class CarouselSliderPage extends StatelessWidget {
               children: [
                 Container(
                   width: size.width,
-                  height: size.height * .2,
+                  height: size.height * .15,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 1),
                       borderRadius: BorderRadius.circular(10)),

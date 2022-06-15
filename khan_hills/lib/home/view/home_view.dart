@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:khan_hills/home/components/carousel_slider.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
+import 'package:khan_hills/home/components/choose_block_photo.dart';
 import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final CarouselController _carouselController = CarouselController();
   int currentIndex = 0;
+  int activeBtnIndex = 0;
 
   @override
   void dispose() {
@@ -72,13 +74,31 @@ class _HomeState extends State<Home> {
               children: [
                 // header
                 CarouselSliderPage(carouselController: _carouselController),
+                //  buttons
                 Row(
-                  children: const [
-                    ChooseBlock(),
-                    Spacer(),
-                    OutsideButton(),
+                  children: [
+                    ChooseBlock(
+                      onPressed: (() {
+                        setState(() {
+                          activeBtnIndex = 0;
+                        });
+                      }),
+                      activeBtnIndex: activeBtnIndex,
+                    ),
+                    const Spacer(),
+                    OutsideButton(
+                      onPressed: (() {
+                        setState(() {
+                          activeBtnIndex = 1;
+                        });
+                      }),
+                      activeBtnIndex: activeBtnIndex,
+                    ),
                   ],
-                )
+                ),
+                SizedBox(height: size.height * .015),
+                // positioned views
+                const ChooseBlockPhoto(),
               ],
             ),
           ),

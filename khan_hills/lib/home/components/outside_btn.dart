@@ -3,15 +3,19 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class OutsideButton extends StatelessWidget {
-  const OutsideButton({
-    Key? key,
-  }) : super(key: key);
+  final VoidCallback onPressed;
+  final int activeBtnIndex;
+  const OutsideButton(
+      {Key? key, required this.activeBtnIndex, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        onPressed();
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -32,12 +36,16 @@ class OutsideButton extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.all(5),
-              child: Image.asset("assets/images/icon_outside.png"),
+              child: Image.asset(activeBtnIndex == 1
+                  ? "assets/images/icon_outside_selected.png"
+                  : "assets/images/icon_outside_unselected.png"),
             ),
             Text(
               "Гадна орчин",
               style: CustomStyles.textSmallSemiBold(context,
-                  textColor: unselectedPrimaryColor),
+                  textColor: activeBtnIndex == 1
+                      ? primaryColor
+                      : unselectedPrimaryColor),
             )
           ],
         ),

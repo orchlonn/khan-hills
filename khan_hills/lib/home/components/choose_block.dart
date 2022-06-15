@@ -3,15 +3,18 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class ChooseBlock extends StatelessWidget {
-  const ChooseBlock({
-    Key? key,
-  }) : super(key: key);
+  final VoidCallback onPressed;
+  int activeBtnIndex;
+  ChooseBlock({Key? key, required this.onPressed, required this.activeBtnIndex})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        onPressed();
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -20,7 +23,7 @@ class ChooseBlock extends StatelessWidget {
               color: primaryColor.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 3,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3),
             ),
           ],
           color: whiteColor,
@@ -32,11 +35,15 @@ class ChooseBlock extends StatelessWidget {
           children: [
             Container(
                 margin: const EdgeInsets.all(5),
-                child: Image.asset("assets/images/icon_choose_block.png")),
+                child: Image.asset(activeBtnIndex == 0
+                    ? "assets/images/icon_choose_block_selected.png"
+                    : "assets/images/icon_choose_block_unselected.png")),
             Text(
               "Блок сонгох",
               style: CustomStyles.textSmallSemiBold(context,
-                  textColor: primaryColor),
+                  textColor: activeBtnIndex == 0
+                      ? primaryColor
+                      : unselectedPrimaryColor),
             )
           ],
         ),
