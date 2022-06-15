@@ -48,9 +48,7 @@ class _HomeState extends State<Home> {
             leadingWidth: size.width * .15,
             leading: Container(
               margin: EdgeInsets.only(left: size.width * .05),
-              child: Image.asset(
-                "assets/images/img_mongolia.png",
-              ),
+              child: Image.asset("assets/images/img_mongolia.png"),
             ),
             title: Text(
               "Khan Hills",
@@ -66,40 +64,64 @@ class _HomeState extends State<Home> {
             ],
           ),
 
-          body: Container(
-            margin: EdgeInsets.only(
-                left: size.width * .05, right: size.width * .05),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // header
-                CarouselSliderPage(carouselController: _carouselController),
-                //  buttons
-                Row(
-                  children: [
-                    ChooseBlock(
-                      onPressed: (() {
-                        setState(() {
-                          activeBtnIndex = 0;
-                        });
+          body: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.only(
+                  left: size.width * .05, right: size.width * .05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // header
+                  CarouselSliderPage(carouselController: _carouselController),
+                  //  buttons
+                  Row(
+                    children: [
+                      ChooseBlock(
+                        onPressed: (() {
+                          setState(() {
+                            activeBtnIndex = 0;
+                          });
+                        }),
+                        activeBtnIndex: activeBtnIndex,
+                      ),
+                      const Spacer(),
+                      OutsideButton(
+                        onPressed: (() {
+                          setState(() {
+                            activeBtnIndex = 1;
+                          });
+                        }),
+                        activeBtnIndex: activeBtnIndex,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: size.height * .015),
+                  // positioned views
+                  activeBtnIndex == 0 ? const ChooseBlockPhoto() : Container(),
+                  SizedBox(height: size.height * .02),
+                  // 5 rooms
+                  const Align(
+                      alignment: Alignment.centerLeft, child: Text("5 өрөө")),
+                  // details of 5 rooms
+                  Container(
+                    height: size.height * .4,
+                    width: size.width,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: ((context, index) {
+                        return Container(
+                          color: Colors.red,
+                          child: Image.asset(
+                            "assets/images/img_5rooms.png",
+                            width: size.width * .6,
+                          ),
+                        );
                       }),
-                      activeBtnIndex: activeBtnIndex,
+                      itemCount: 4,
                     ),
-                    const Spacer(),
-                    OutsideButton(
-                      onPressed: (() {
-                        setState(() {
-                          activeBtnIndex = 1;
-                        });
-                      }),
-                      activeBtnIndex: activeBtnIndex,
-                    ),
-                  ],
-                ),
-                SizedBox(height: size.height * .015),
-                // positioned views
-                const ChooseBlockPhoto(),
-              ],
+                  )
+                ],
+              ),
             ),
           ),
 
