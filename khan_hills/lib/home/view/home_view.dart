@@ -103,18 +103,15 @@ class _HomeState extends State<Home> {
                   const Align(
                       alignment: Alignment.centerLeft, child: Text("5 өрөө")),
                   // details of 5 rooms
-                  Container(
-                    height: size.height * .4,
+                  SizedBox(
+                    height: size.height * .1,
                     width: size.width,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: ((context, index) {
                         return Container(
                           color: Colors.red,
-                          child: Image.asset(
-                            "assets/images/img_5rooms.png",
-                            width: size.width * .6,
-                          ),
+                          child: Image.asset("assets/images/img_5rooms.png"),
                         );
                       }),
                       itemCount: 4,
