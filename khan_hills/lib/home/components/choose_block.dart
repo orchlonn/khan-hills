@@ -5,7 +5,16 @@ import 'package:khan_hills/utils/custom_styles.dart';
 class ChooseBlock extends StatelessWidget {
   final VoidCallback onPressed;
   int activeBtnIndex;
-  ChooseBlock({Key? key, required this.onPressed, required this.activeBtnIndex})
+  final String title;
+  final String activeIcon;
+  final String nonActiveIcon;
+  ChooseBlock(
+      {Key? key,
+      required this.onPressed,
+      required this.activeIcon,
+      required this.nonActiveIcon,
+      required this.activeBtnIndex,
+      required this.title})
       : super(key: key);
 
   @override
@@ -35,12 +44,13 @@ class ChooseBlock extends StatelessWidget {
           children: [
             Container(
                 margin: const EdgeInsets.all(5),
-                child: Image.asset(activeBtnIndex == 0
-                    ? "assets/images/icon_choose_block_selected.png"
-                    : "assets/images/icon_choose_block_unselected.png")),
+                child: Image.asset(
+                  activeBtnIndex == 0 ? activeIcon : nonActiveIcon,
+                  width: size.width * .08,
+                )),
             Text(
-              "Блок сонгох",
-              style: CustomStyles.textSmallSemiBold(context,
+              title,
+              style: CustomStyles.textMediumSemiBold(context,
                   textColor: activeBtnIndex == 0
                       ? primaryColor
                       : unselectedPrimaryColor),

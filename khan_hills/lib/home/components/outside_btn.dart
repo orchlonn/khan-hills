@@ -5,8 +5,14 @@ import 'package:khan_hills/utils/custom_styles.dart';
 class OutsideButton extends StatelessWidget {
   final VoidCallback onPressed;
   final int activeBtnIndex;
+  final title, activeImage, nonActiveImage;
   const OutsideButton(
-      {Key? key, required this.activeBtnIndex, required this.onPressed})
+      {Key? key,
+      required this.activeBtnIndex,
+      required this.onPressed,
+      required this.title,
+      required this.activeImage,
+      required this.nonActiveImage})
       : super(key: key);
 
   @override
@@ -36,13 +42,12 @@ class OutsideButton extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.all(5),
-              child: Image.asset(activeBtnIndex == 1
-                  ? "assets/images/icon_outside_selected.png"
-                  : "assets/images/icon_outside_unselected.png"),
+              child: Image.asset(
+                  activeBtnIndex == 1 ? activeImage : nonActiveImage),
             ),
             Text(
-              "Гадна орчин",
-              style: CustomStyles.textSmallSemiBold(context,
+              title,
+              style: CustomStyles.textMediumSemiBold(context,
                   textColor: activeBtnIndex == 1
                       ? primaryColor
                       : unselectedPrimaryColor),
