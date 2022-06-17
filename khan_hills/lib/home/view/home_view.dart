@@ -6,11 +6,13 @@ import 'package:khan_hills/home/components/carousel_slider.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
 import 'package:khan_hills/home/components/choose_block_photo.dart';
 import 'package:khan_hills/home/components/contact_page.dart';
+import 'package:khan_hills/home/components/detail_material.dart';
 import 'package:khan_hills/home/components/detail_photo.dart';
 import 'package:khan_hills/home/components/experience.dart';
 import 'package:khan_hills/home/components/information.dart';
 import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/home/components/see_outside.dart';
+import 'package:khan_hills/notf/view/notf.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
@@ -57,17 +59,24 @@ class _HomeState extends State<Home> {
                     margin: EdgeInsets.only(left: size.width * .05),
                     child: Image.asset("assets/images/img_mongolia.png"),
                   ),
-                  title: Text(
-                    "Khan Hills",
-                    style: CustomStyles.textMediumBold(context),
-                  ),
+                  title: Text("Khan Hills",
+                      style: CustomStyles.textMediumBold(context)),
                   actions: [
-                    Container(
-                        margin: EdgeInsets.only(right: size.width * .05),
-                        child: Image.asset(
-                          "assets/images/notification.png",
-                          width: size.width * .1,
-                        )),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const NotificationsPage()));
+                      },
+                      child: Container(
+                          margin: EdgeInsets.only(right: size.width * .05),
+                          child: Image.asset(
+                            "assets/images/notification.png",
+                            width: size.width * .1,
+                          )),
+                    ),
                   ],
                 )
               : currentIndex == 2
@@ -128,6 +137,7 @@ class _HomeState extends State<Home> {
                         Row(
                           children: [
                             ChooseBlock(
+                              width: .43,
                               activeIcon:
                                   "assets/images/icon_choose_block_selected.png",
                               nonActiveIcon:
@@ -142,6 +152,7 @@ class _HomeState extends State<Home> {
                             ),
                             const Spacer(),
                             OutsideButton(
+                              width: .43,
                               title: "Гадна орчин",
                               activeImage:
                                   "assets/images/icon_outside_selected.png",
@@ -194,19 +205,31 @@ class _HomeState extends State<Home> {
                         // details of 3 rooms
                         const DetailPhoto(
                             photoUrl: "assets/images/img_5rooms.png"),
+                        // materials
                         Row(
                           children: [
                             Text(
                               "Материалууд",
                               style: CustomStyles.textSmallmSemiBold(context),
                             ),
-                            SizedBox(width: size.width * .35),
+                            SizedBox(width: size.width * .42),
                             IconButton(
                                 onPressed: () {},
                                 icon: const Icon(Icons.navigate_next))
                           ],
                         ),
+                        // material detail
+                        const DetailMaterial(
+                            photoUrl: "assets/images/img_5rooms.png"),
                         SizedBox(height: size.height * .01),
+                        // location
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text("Хотхоны байршил",
+                                style:
+                                    CustomStyles.textMinimSemiBold(context))),
+                        SizedBox(height: size.height * .01),
+                        Image.asset("assets/images/img_map.png"),
                       ],
                     ),
                   ),
@@ -224,19 +247,22 @@ class _HomeState extends State<Home> {
                               height: size.height * .4,
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: size.height * .06),
+                              margin: EdgeInsets.only(top: size.height * .04),
                               child: Image.asset("assets/images/img_logo.png"),
                             )
                           ],
                         ),
                         //! select option
                         Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: size.height * .018,
-                              horizontal: size.width * .04),
+                          margin: EdgeInsets.only(
+                            top: size.height * .018,
+                            left: size.width * .04,
+                            right: size.width * .04,
+                          ),
                           child: Row(
                             children: [
                               ChooseBlock(
+                                width: .43,
                                 activeIcon:
                                     "assets/images/img_orginization_active.png",
                                 nonActiveIcon:
@@ -251,6 +277,7 @@ class _HomeState extends State<Home> {
                               ),
                               const Spacer(),
                               OutsideButton(
+                                width: .43,
                                 title: "Туршлага",
                                 activeImage:
                                     "assets/images/img_experience_active.png",

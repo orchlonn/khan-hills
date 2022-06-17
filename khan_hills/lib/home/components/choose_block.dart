@@ -5,12 +5,12 @@ import 'package:khan_hills/utils/custom_styles.dart';
 class ChooseBlock extends StatelessWidget {
   final VoidCallback onPressed;
   int activeBtnIndex;
-  final String title;
-  final String activeIcon;
-  final String nonActiveIcon;
+  final String title, activeIcon, nonActiveIcon;
+  final double width;
   ChooseBlock(
       {Key? key,
       required this.onPressed,
+      required this.width,
       required this.activeIcon,
       required this.nonActiveIcon,
       required this.activeBtnIndex,
@@ -29,7 +29,9 @@ class ChooseBlock extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: primaryColor.withOpacity(0.3),
+              color: activeBtnIndex == 0
+                  ? primaryColor.withOpacity(0.3)
+                  : Colors.grey.withOpacity(0.1),
               spreadRadius: 1,
               blurRadius: 3,
               offset: const Offset(0, 3),
@@ -37,7 +39,7 @@ class ChooseBlock extends StatelessWidget {
           ],
           color: whiteColor,
         ),
-        width: size.width * .43,
+        width: size.width * width,
         height: size.height * .05,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +52,7 @@ class ChooseBlock extends StatelessWidget {
                 )),
             Text(
               title,
-              style: CustomStyles.textMediumSemiBold(context,
+              style: CustomStyles.textMinimSemiBold(context,
                   textColor: activeBtnIndex == 0
                       ? primaryColor
                       : unselectedPrimaryColor),

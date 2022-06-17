@@ -37,4 +37,22 @@ extension CustomStyles on TextTheme {
       fontWeight: FontWeight.w700,
     );
   }
+
+  static TextStyle textMiniNormal(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle textLittleMiniNormal(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khan_hills/room_detail/view/room_detail.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class DetailPhoto extends StatelessWidget {
@@ -15,21 +16,27 @@ class DetailPhoto extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: ((context, index) {
-          return Container(
-            margin: const EdgeInsets.all(10),
-            width: size.width * .37,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: primaryColor.withOpacity(0.3),
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                  offset: const Offset(3, 5),
+          return InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => RoomDetail())));
+            },
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              width: size.width * .37,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: primaryColor.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: const Offset(3, 5),
+                  ),
+                ],
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage("https://picsum.photos/250?image=9"),
                 ),
-              ],
-              image: const DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage("https://picsum.photos/250?image=9"),
               ),
             ),
           );

@@ -87,7 +87,7 @@ class PrimaryButton extends StatelessWidget {
           color: primaryColor,
         ),
         width: size.width,
-        height: size.height * .08,
+        height: size.height * .07,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

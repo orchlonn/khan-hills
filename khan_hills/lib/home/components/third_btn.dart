@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
-class OutsideButton extends StatelessWidget {
+class ThirdBtn extends StatelessWidget {
   final VoidCallback onPressed;
   final int activeBtnIndex;
   final double width;
   final title, activeImage, nonActiveImage;
-  const OutsideButton(
+  const ThirdBtn(
       {Key? key,
       required this.activeBtnIndex,
       required this.onPressed,
@@ -29,7 +29,7 @@ class OutsideButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: activeBtnIndex == 1
+              color: activeBtnIndex == 2
                   ? primaryColor.withOpacity(0.3)
                   : Colors.grey.withOpacity(0.1),
               spreadRadius: 1,
@@ -47,14 +47,14 @@ class OutsideButton extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(5),
               child: Image.asset(
-                activeBtnIndex == 1 ? activeImage : nonActiveImage,
+                activeBtnIndex == 2 ? activeImage : nonActiveImage,
                 width: size.width * .07,
               ),
             ),
             Text(
               title,
               style: CustomStyles.textMinimSemiBold(context,
-                  textColor: activeBtnIndex == 1
+                  textColor: activeBtnIndex == 2
                       ? primaryColor
                       : unselectedPrimaryColor),
             )
