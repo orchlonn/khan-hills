@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:khan_hills/home/components/brands.dart';
 import 'package:khan_hills/home/components/carousel_slider.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
 import 'package:khan_hills/home/components/choose_block_photo.dart';
+import 'package:khan_hills/home/components/contact_page.dart';
 import 'package:khan_hills/home/components/detail_photo.dart';
+import 'package:khan_hills/home/components/experience.dart';
+import 'package:khan_hills/home/components/information.dart';
 import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/home/components/see_outside.dart';
 import 'package:khan_hills/utils/colors.dart';
@@ -88,7 +92,26 @@ class _HomeState extends State<Home> {
                             )),
                       ],
                     )
-                  : null,
+                  : currentIndex == 3
+                      ? AppBar(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          leadingWidth: size.width * .15,
+                          title: Text(
+                            "Холбоо барих",
+                            style: CustomStyles.textMediumBold(context),
+                          ),
+                          actions: [
+                            Container(
+                                margin:
+                                    EdgeInsets.only(right: size.width * .05),
+                                child: Image.asset(
+                                  "assets/images/img_phone.png",
+                                  width: size.width * .07,
+                                )),
+                          ],
+                        )
+                      : null,
 
           body: currentIndex == 0
               ? SingleChildScrollView(
@@ -188,7 +211,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 )
-              //!current index = 1 buyu about us
+              //! current index = 1 buyu about us
               : currentIndex == 1
                   ? Column(
                       children: [
@@ -246,33 +269,11 @@ class _HomeState extends State<Home> {
                         activeBtnIndex == 0 ? Information() : Experience(),
                       ],
                     )
-                  // assets/images/img_brand.png
-                  : SingleChildScrollView(
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: size.width * .04),
-                        child: SizedBox(
-                          height: size.height,
-                          child: GridView.builder(
-                              gridDelegate:
-                                  const SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent: 250,
-                                      childAspectRatio: 3 / 2,
-                                      crossAxisSpacing: 20,
-                                      mainAxisSpacing: 20),
-                              itemCount: 8,
-                              itemBuilder: (BuildContext ctx, index) {
-                                return Container(
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
-                                      "assets/images/img_brand.png"),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15)),
-                                );
-                              }),
-                        ),
-                      ),
-                    ),
+                  //! current index = 2 buyu brands
+                  : currentIndex == 2
+                      ? BrandsPage()
+                      //! current index = 3 buyu contact
+                      : ContactPage(),
 
           //! bottom navbar
           bottomNavigationBar: Container(
@@ -334,79 +335,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class Experience extends StatelessWidget {
-  const Experience({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: size.width * .04),
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Хийж гүйцэтгэсэн төслүүд",
-                style: CustomStyles.textMediumSemiBold(context),
-              ),
-            ),
-            SizedBox(
-              height: size.height * .37,
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 250,
-                      childAspectRatio: 3 / 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
-                  itemCount: 4,
-                  itemBuilder: (BuildContext ctx, index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      child: Image.asset("assets/images/img_experience.png"),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15)),
-                    );
-                  }),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Information extends StatelessWidget {
-  const Information({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: size.width * .04),
-      child: Column(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Компанийн танилцуулга",
-              style: CustomStyles.textMediumSemiBold(context),
-            ),
-          ),
-          SizedBox(height: size.height * .02),
-          Text(
-              "Mogul ibiz ХХК нь иргэний ба үйлдвэрийн барилга, дэд бүтцийн барилга байгууламж барих үйл ажиллагаа явуулах үндсэн зорилготойгоор 2010 онд үүсгэн байгуулагдсан. Манай компани нь байгуулагдсан цагаасаа хойш өөрсдийн хэрэгжүүлж буй орон сууцны төслүүдийнхээ барилга угсралтын ажлыг хийхийн зэрэгцээ, аж ахуй нэгж, иргэний захиалгын дагуу төрөл бүрийн иргэний ба үйлдвэрийн барилга байгуулмжийг барьж амжилттай ашиглалтанд хүлээлгэн өгсөн. Мөн барилга угсралт, зам гүүрийн байгууламж барих, засварлах зэрэг тусгай зөвшөөрлүүдийнхээ хүрээнд хөдөлмөр хамгаалал, чанарын баталгааг эрхэмлэн ажилласаар ирсэн."),
-        ],
-      ),
     );
   }
 }

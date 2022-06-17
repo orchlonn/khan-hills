@@ -38,7 +38,9 @@ class CarouselSliderPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Text('text $i'),
                 ),
-                SizedBox(
+                Container(
+                  // color: Colors.red,
+                  margin: EdgeInsets.only(left: size.width * .18),
                   width: size.width,
                   height: size.height * .023,
                   child: ListView.builder(

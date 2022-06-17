@@ -24,7 +24,16 @@ extension CustomStyles on TextTheme {
       {Color textColor = blackColor}) {
     return TextStyle(
       color: textColor,
-      fontSize: 18,
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle textMinimSemiBold(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 14,
       fontWeight: FontWeight.w700,
     );
   }
