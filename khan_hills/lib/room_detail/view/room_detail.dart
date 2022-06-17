@@ -109,19 +109,81 @@ class _RoomDetailState extends State<RoomDetail> {
                 SizedBox(height: size.height * .025),
                 activeBtnIndex == 0
                     //Photo side
-                    ? Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(width: 1, color: primaryColor)),
-                        height: size.height * .05,
-                        width: size.width,
-                        child: Center(
-                          child: Text(
-                            "Та өрөөн дээр дарж дэлгэрэнгүй зураг үзээрэй",
-                            style: CustomStyles.textLittleMiniNormal(context,
-                                textColor: primaryColor),
+                    ? Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border:
+                                    Border.all(width: 1, color: primaryColor)),
+                            height: size.height * .05,
+                            width: size.width,
+                            child: Center(
+                              child: Text(
+                                "Та өрөөн дээр дарж дэлгэрэнгүй зураг үзээрэй",
+                                style: CustomStyles.textLittleMiniNormal(
+                                    context,
+                                    textColor: primaryColor),
+                              ),
+                            ),
                           ),
-                        ),
+                          Stack(
+                            children: [
+                              Image.asset(
+                                "assets/images/image_3_uruu.png",
+                                height: size.height * .35,
+                              ),
+                              // a vseg
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: size.height * .18,
+                                      left: size.width * .19),
+                                  width: size.width * .1,
+                                  child: Image.asset(
+                                      "assets/images/img_choose_block_a.png"),
+                                ),
+                              ),
+                              // b vseg
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: size.height * .15,
+                                      left: size.width * .42),
+                                  width: size.width * .1,
+                                  child: Image.asset(
+                                      "assets/images/img_choose_block_b.png"),
+                                ),
+                              ),
+                              // c vseg
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: size.height * .08,
+                                      left: size.width * .55),
+                                  width: size.width * .1,
+                                  child: Image.asset(
+                                      "assets/images/img_choose_block_c.png"),
+                                ),
+                              ),
+                              // d vseg
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: size.height * .26,
+                                      left: size.width * .55),
+                                  width: size.width * .1,
+                                  child: Image.asset(
+                                      "assets/images/img_choose_block_d.png"),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       )
                     : Container()
               ],
