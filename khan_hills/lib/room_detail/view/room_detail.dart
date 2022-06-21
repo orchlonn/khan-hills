@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
 import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/home/components/third_btn.dart';
+import 'package:khan_hills/room_detail/components/photo_side.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -140,8 +141,8 @@ class _RoomDetailState extends State<RoomDetail> {
                         ),
                         SizedBox(height: size.height * .025),
                         activeBtnIndex == 0
-                            //Photo side
-                            ? const PhotoSide()
+                            //! Photo side
+                            ? PhotoSide()
                             : activeBtnIndex == 1
                                 ? Column(
                                     children: [
@@ -162,97 +163,25 @@ class _RoomDetailState extends State<RoomDetail> {
                                           ),
                                         ),
                                       ),
-                                      player,
+                                      // room detail video
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: size.height * .03,
+                                            horizontal: size.width * .02),
+                                        child: player,
+                                      ),
                                     ],
                                   )
-                                : Container()
+                                : Container(
+                                    height: 100,
+                                    width: 100,
+                                    color: Colors.red,
+                                  )
                       ],
                     ),
                   ),
                 ),
               ],
             ));
-  }
-}
-
-class PhotoSide extends StatelessWidget {
-  const PhotoSide({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(width: 1, color: primaryColor)),
-          height: size.height * .05,
-          width: size.width,
-          child: Center(
-            child: Text(
-              "Та өрөөн дээр дарж дэлгэрэнгүй зураг үзээрэй",
-              style: CustomStyles.textLittleMiniNormal(context,
-                  textColor: primaryColor),
-            ),
-          ),
-        ),
-        Stack(
-          children: [
-            Positioned(
-                child: Image.asset(
-              "assets/images/image_3_uruu.png",
-              height: size.height * .4,
-              width: size.width,
-            )),
-            // a vseg
-            Positioned(
-                top: size.height * .22,
-                left: size.width * .27,
-                child: InkWell(
-                  onTap: () {},
-                  child: Image.asset(
-                    "assets/images/img_choose_block_a.png",
-                    width: size.width * .07,
-                  ),
-                )),
-            // b vseg
-            Positioned(
-                top: size.height * .16,
-                left: size.width * .45,
-                child: InkWell(
-                  onTap: () {},
-                  child: Image.asset(
-                    "assets/images/img_choose_block_b.png",
-                    width: size.width * .07,
-                  ),
-                )),
-            // c vseg
-            Positioned(
-                left: size.width * .53,
-                top: size.height * .088,
-                child: InkWell(
-                  onTap: () {},
-                  child: Image.asset(
-                    "assets/images/img_choose_block_c.png",
-                    width: size.width * .07,
-                  ),
-                )),
-            // d vseg
-            Positioned(
-              top: size.height * .29,
-              left: size.width * .54,
-              child: InkWell(
-                onTap: () {},
-                child: Image.asset(
-                  "assets/images/img_choose_block_d.png",
-                  width: size.width * .07,
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
-    );
   }
 }
