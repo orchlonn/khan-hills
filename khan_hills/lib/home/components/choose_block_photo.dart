@@ -28,11 +28,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // a vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .12, top: size.height * .032),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .12, top: size.height * .032),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_a.png",
                 height: size.height * .04,
@@ -40,11 +40,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // b vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .418, top: size.height * .032),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .418, top: size.height * .032),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_b.png",
                 height: size.height * .04,
@@ -52,11 +52,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // c vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .72, top: size.height * .032),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .72, top: size.height * .032),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_c.png",
                 height: size.height * .04,
@@ -64,11 +64,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // d vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .168, top: size.height * .185),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .168, top: size.height * .185),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_d.png",
                 height: size.height * .04,
@@ -76,11 +76,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // e vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .415, top: size.height * .185),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .415, top: size.height * .185),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_e.png",
                 height: size.height * .04,
@@ -88,11 +88,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // f vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .66, top: size.height * .185),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .66, top: size.height * .185),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_f.png",
                 height: size.height * .04,
@@ -100,11 +100,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // g vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .05, top: size.height * .305),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .05, top: size.height * .305),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_g.png",
                 width: size.width * .09,
@@ -112,11 +112,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // h vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .295, top: size.height * .305),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .295, top: size.height * .305),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_h.png",
                 width: size.width * .09,
@@ -124,11 +124,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // i vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .535, top: size.height * .305),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .535, top: size.height * .305),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_i.png",
                 width: size.width * .09,
@@ -136,11 +136,11 @@ class ChooseBlockPhoto extends StatelessWidget {
             ),
           ),
           // j vseg
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: size.width * .78, top: size.height * .305),
+          Container(
+            margin: EdgeInsets.only(
+                left: size.width * .78, top: size.height * .305),
+            child: InkWell(
+              onTap: () {},
               child: Image.asset(
                 "assets/images/img_choose_block_j.png",
                 width: size.width * .09,

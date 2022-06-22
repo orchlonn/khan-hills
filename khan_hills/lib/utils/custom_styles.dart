@@ -23,10 +23,10 @@ extension CustomStyles on TextTheme {
   static TextStyle textSmallmSemiBold(BuildContext context,
       {Color textColor = blackColor}) {
     return TextStyle(
-      color: textColor,
-      fontSize: 16,
-      fontWeight: FontWeight.w700,
-    );
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        decoration: TextDecoration.none);
   }
 
   static TextStyle textMinimSemiBold(BuildContext context,

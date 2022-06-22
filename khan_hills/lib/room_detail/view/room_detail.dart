@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
 import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/home/components/third_btn.dart';
+import 'package:khan_hills/room_detail/components/360_photo.dart';
 import 'package:khan_hills/room_detail/components/photo_side.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
@@ -132,6 +133,11 @@ class _RoomDetailState extends State<RoomDetail> {
                                   "assets/images/img_experience_nonActive.png",
                               onPressed: (() {
                                 setState(() {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PanoramaPhoto()));
                                   activeBtnIndex = 2;
                                 });
                               }),
@@ -144,6 +150,7 @@ class _RoomDetailState extends State<RoomDetail> {
                             //! Photo side
                             ? PhotoSide()
                             : activeBtnIndex == 1
+                                //! video side
                                 ? Column(
                                     children: [
                                       Container(
@@ -172,11 +179,7 @@ class _RoomDetailState extends State<RoomDetail> {
                                       ),
                                     ],
                                   )
-                                : Container(
-                                    height: 100,
-                                    width: 100,
-                                    color: Colors.red,
-                                  )
+                                : Container(),
                       ],
                     ),
                   ),
