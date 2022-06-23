@@ -168,7 +168,7 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                         SizedBox(height: size.height * .015),
-                        // positioned views
+                        //! positioned views
                         activeBtnIndex == 0
                             ? const ChooseBlockPhoto()
                             : const SeeOutsidePhoto(),

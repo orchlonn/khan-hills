@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khan_hills/block_detail/view/block_detail.dart';
 
 class ChooseBlockPhoto extends StatelessWidget {
   const ChooseBlockPhoto({
@@ -32,7 +33,12 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .12, top: size.height * .032),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BlockDetail()),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_a.png",
                 height: size.height * .04,

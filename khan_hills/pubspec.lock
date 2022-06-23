@@ -86,7 +86,7 @@ packages:
     source: hosted
     version: "3.0.2"
   cupertino_icons:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
@@ -172,13 +172,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_toggle_tab:
-    dependency: "direct main"
-    description:
-      name: flutter_toggle_tab
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.0"
   http:
     dependency: transitive
     description:
