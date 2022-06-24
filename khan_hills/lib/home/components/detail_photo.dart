@@ -1,15 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:khan_hills/models/get_room_numbers.dart';
 import 'package:khan_hills/room_detail/view/room_detail.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class DetailPhoto extends StatelessWidget {
   const DetailPhoto({Key? key, required this.photoUrl}) : super(key: key);
-  final String photoUrl;
+  final List<Apart> photoUrl;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    print("${photoUrl[0].thumbImg.runtimeType} ggg");
     return SizedBox(
       height: size.height * .23,
       width: size.width,
@@ -33,11 +35,18 @@ class DetailPhoto extends StatelessWidget {
                     offset: const Offset(3, 5),
                   ),
                 ],
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage("https://picsum.photos/250?image=9"),
+                  image: NetworkImage(photoUrl[index].thumbImg),
                 ),
               ),
+              // child: FittedBox(
+              //   child: CachedNetworkImage(
+              //     imageUrl: photoUrl[index].thumbImg,
+              //     fit: BoxFit
+              //         .fill, // I thought this would fill up my Container but it doesn't
+              //   ),
+              // ),
             ),
           );
           // return SizedBox(

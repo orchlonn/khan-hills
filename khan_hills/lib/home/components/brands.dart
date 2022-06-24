@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:khan_hills/models/get_brands.dart';
 
 class BrandsPage extends StatelessWidget {
-  const BrandsPage({
-    Key? key,
-  }) : super(key: key);
+  List<Datum>? brandData;
+  BrandsPage({Key? key, required this.brandData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,14 @@ class BrandsPage extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 250,
                   childAspectRatio: 3 / 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20),
-              itemCount: 20,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10),
+              itemCount: brandData?.length,
               itemBuilder: (BuildContext ctx, index) {
                 return Container(
                   alignment: Alignment.center,
-                  child: Image.asset("assets/images/img_brand.png"),
+                  child:
+                      CachedNetworkImage(imageUrl: brandData![index].thumbImg),
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(15)),
                 );
