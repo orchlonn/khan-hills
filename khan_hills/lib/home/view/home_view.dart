@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:khan_hills/home/components/brands.dart';
+import 'package:khan_hills/home/components/all_brands.dart';
 import 'package:khan_hills/home/components/carousel_slider.dart';
 import 'package:khan_hills/home/components/choose_block.dart';
 import 'package:khan_hills/home/components/choose_block_photo.dart';
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
         var getBannerLists = value.getBannerList?.data;
         var getBrandList = value.getBrandList?.data;
         var getRooms = value.getRooms?.data;
-        print(getRooms?[0].aparts.runtimeType);
+
         return Stack(
           children: [
             Container(
@@ -112,13 +112,22 @@ class _HomeState extends State<Home> {
                             style: CustomStyles.textMediumBold(context),
                           ),
                           actions: [
-                            Container(
-                                margin:
-                                    EdgeInsets.only(right: size.width * .05),
-                                child: Image.asset(
-                                  "assets/images/notification.png",
-                                  width: size.width * .1,
-                                )),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NotificationsPage()));
+                              },
+                              child: Container(
+                                  margin:
+                                      EdgeInsets.only(right: size.width * .05),
+                                  child: Image.asset(
+                                    "assets/images/notification.png",
+                                    width: size.width * .1,
+                                  )),
+                            ),
                           ],
                         )
                       : currentIndex == 3

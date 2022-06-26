@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:khan_hills/models/get_room_numbers.dart';
 import 'package:khan_hills/room_detail/view/room_detail.dart';
@@ -11,7 +10,6 @@ class DetailPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print("${photoUrl[0].thumbImg.runtimeType} ggg");
     return SizedBox(
       height: size.height * .23,
       width: size.width,

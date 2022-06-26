@@ -11,7 +11,8 @@ class BlockDetail extends StatefulWidget {
 
 class _BlockDetailState extends State<BlockDetail> {
   @override
-  String dropdownvalue = 'Item 1';
+  List<String> items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+  String? selectedItem = 'Item 1';
 
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,7 +43,10 @@ class _BlockDetailState extends State<BlockDetail> {
             actions: [
               IconButton(
                 onPressed: () {},
-                icon: Image.asset("assets/images/img_phone_white.png"),
+                icon: Image.asset(
+                  "assets/images/img_phone_white.png",
+                  width: size.width * .055,
+                ),
               ),
             ],
           ),
@@ -56,18 +60,23 @@ class _BlockDetailState extends State<BlockDetail> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(
-                      vertical: size.height * .01,
-                      horizontal: size.width * .015),
-                  width: size.width * .285,
-                  child: Column(
-                    children: [
-                      Text("data1"),
-                      Text("data1"),
-                      Text("data1"),
-                      Text("data1"),
-                      Text("data1"),
-                    ],
+                  width: 100,
+                  child: DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 3, color: Colors.red)),
+                    ),
+                    items: items
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            ))
+                        .toList(),
+                    onChanged: (item) => setState(() {
+                      selectedItem = item;
+                    }),
+                    value: selectedItem,
                   ),
                 ),
                 Container(
@@ -110,11 +119,3 @@ class _BlockDetailState extends State<BlockDetail> {
     );
   }
 }
-
-var items = [
-  'Item 1',
-  'Item 2',
-  'Item 3',
-  'Item 4',
-  'Item 5',
-];
