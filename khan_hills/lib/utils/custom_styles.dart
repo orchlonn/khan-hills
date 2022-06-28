@@ -29,6 +29,15 @@ extension CustomStyles on TextTheme {
         decoration: TextDecoration.none);
   }
 
+  static TextStyle textSmallNormal(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        decoration: TextDecoration.none);
+  }
+
   static TextStyle textMinimSemiBold(BuildContext context,
       {Color textColor = blackColor}) {
     return TextStyle(
@@ -53,6 +62,15 @@ extension CustomStyles on TextTheme {
       color: textColor,
       fontSize: 12,
       fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle textLargeBold(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 32,
+      fontWeight: FontWeight.w700,
     );
   }
 }
