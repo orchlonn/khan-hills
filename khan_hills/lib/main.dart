@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/choose_lang/choose_lang.dart';
-import 'package:khan_hills/home/view/home_view.dart';
 import 'package:khan_hills/providers/main_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
         ],
-        child: const ChooseLanguage(),
+        child: ChooseLanguage(),
       ),
     );
   }
