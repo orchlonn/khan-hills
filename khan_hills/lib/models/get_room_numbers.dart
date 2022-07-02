@@ -18,10 +18,11 @@ class RoomNumbers {
     required this.data,
   });
 
-  List<Datum> data;
+  List<GetRooms> data;
 
   factory RoomNumbers.fromJson(Map<String, dynamic> json) => RoomNumbers(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data:
+            List<GetRooms>.from(json["data"].map((x) => GetRooms.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,8 +30,8 @@ class RoomNumbers {
       };
 }
 
-class Datum {
-  Datum({
+class GetRooms {
+  GetRooms({
     required this.id,
     required this.name,
     required this.aparts,
@@ -40,7 +41,7 @@ class Datum {
   String name;
   List<Apart> aparts;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory GetRooms.fromJson(Map<String, dynamic> json) => GetRooms(
         id: json["id"],
         name: json["name"],
         aparts: List<Apart>.from(json["aparts"].map((x) => Apart.fromJson(x))),

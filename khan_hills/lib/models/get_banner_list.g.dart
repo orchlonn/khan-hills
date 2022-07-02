@@ -9,7 +9,7 @@ part of 'get_banner_list.dart';
 GetBannerList _$GetBannerListFromJson(Map<String, dynamic> json) =>
     GetBannerList(
       data: (json['data'] as List<dynamic>)
-          .map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .map((e) => BannerData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

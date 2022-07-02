@@ -8,7 +8,7 @@ part of 'get_room_numbers.dart';
 
 RoomNumbers _$RoomNumbersFromJson(Map<String, dynamic> json) => RoomNumbers(
       data: (json['data'] as List<dynamic>)
-          .map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .map((e) => GetRooms.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

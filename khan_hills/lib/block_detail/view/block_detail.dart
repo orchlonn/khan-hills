@@ -80,35 +80,43 @@ class _BlockDetailState extends State<BlockDetail> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(
-                      vertical: size.height * .01,
-                      horizontal: size.width * .015),
-                  width: size.width * .285,
-                  child: Column(
-                    children: [
-                      Text("data2"),
-                      Text("data2"),
-                      Text("data2"),
-                      Text("data2"),
-                      Text("data2"),
-                      Text("data2"),
-                    ],
+                  width: 100,
+                  child: DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 3, color: Colors.red)),
+                    ),
+                    items: items
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            ))
+                        .toList(),
+                    onChanged: (item) => setState(() {
+                      selectedItem = item;
+                    }),
+                    value: selectedItem,
                   ),
                 ),
                 Container(
-                  width: size.width * .27,
-                  margin: EdgeInsets.symmetric(
-                      vertical: size.height * .01,
-                      horizontal: size.width * .015),
-                  child: Column(
-                    children: [
-                      Text("data"),
-                      Text("data"),
-                      Text("data"),
-                      Text("data"),
-                      Text("data"),
-                      Text("data"),
-                    ],
+                  width: 100,
+                  child: DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 3, color: Colors.red)),
+                    ),
+                    items: items
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            ))
+                        .toList(),
+                    onChanged: (item) => setState(() {
+                      selectedItem = item;
+                    }),
+                    value: selectedItem,
                   ),
                 ),
               ],

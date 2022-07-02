@@ -8,7 +8,7 @@ part of 'get_brands.dart';
 
 BrandList _$BrandListFromJson(Map<String, dynamic> json) => BrandList(
       data: (json['data'] as List<dynamic>)
-          .map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .map((e) => GetBrandList.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

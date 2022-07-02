@@ -17,10 +17,11 @@ class BrandList {
     required this.data,
   });
 
-  List<Datum> data;
+  List<GetBrandList> data;
 
   factory BrandList.fromJson(Map<String, dynamic> json) => BrandList(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<GetBrandList>.from(
+            json["data"].map((x) => GetBrandList.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +29,8 @@ class BrandList {
       };
 }
 
-class Datum {
-  Datum({
+class GetBrandList {
+  GetBrandList({
     required this.id,
     required this.thumbImg,
   });
@@ -37,7 +38,7 @@ class Datum {
   int id;
   String thumbImg;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory GetBrandList.fromJson(Map<String, dynamic> json) => GetBrandList(
         id: json["id"],
         thumbImg: json["thumbImg"],
       );

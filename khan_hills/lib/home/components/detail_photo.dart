@@ -18,8 +18,10 @@ class DetailPhoto extends StatelessWidget {
         itemBuilder: ((context, index) {
           return InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => RoomDetail())));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const RoomDetail())));
             },
             child: Container(
               margin: const EdgeInsets.all(10),

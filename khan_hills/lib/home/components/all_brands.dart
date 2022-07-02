@@ -5,7 +5,7 @@ import 'package:khan_hills/models/get_brands.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class BrandsPage extends StatelessWidget {
-  List<Datum>? brandData;
+  List<GetBrandList>? brandData;
   BrandsPage({Key? key, required this.brandData}) : super(key: key);
 
   @override

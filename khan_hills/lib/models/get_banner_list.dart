@@ -17,10 +17,11 @@ class GetBannerList {
     required this.data,
   });
 
-  List<Datum> data;
+  List<BannerData> data;
 
   factory GetBannerList.fromJson(Map<String, dynamic> json) => GetBannerList(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<BannerData>.from(
+            json["data"].map((x) => BannerData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +29,8 @@ class GetBannerList {
       };
 }
 
-class Datum {
-  Datum({
+class BannerData {
+  BannerData({
     required this.id,
     required this.title,
     required this.headline,
@@ -41,7 +42,7 @@ class Datum {
   String headline;
   String thumbImg;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory BannerData.fromJson(Map<String, dynamic> json) => BannerData(
         id: json["id"],
         title: json["title"],
         headline: json["headline"],

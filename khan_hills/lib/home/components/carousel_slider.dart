@@ -6,7 +6,7 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class CarouselSliderPage extends StatelessWidget {
-  final List<Datum>? data;
+  final List<BannerData>? data;
   const CarouselSliderPage({
     Key? key,
     required this.data,
