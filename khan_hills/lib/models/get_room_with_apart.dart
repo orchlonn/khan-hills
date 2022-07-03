@@ -1,26 +1,28 @@
 // To parse this JSON data, do
 //
-//     final roomNumbers = roomNumbersFromJson(jsonString);
+//     final RoomNumbersWithApartList = RoomNumbersWithApartListFromJson(jsonString);
 
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
-part 'get_room_numbers.g.dart';
+part 'get_room_with_apart.g.dart';
 
-RoomNumbers roomNumbersFromJson(String str) =>
-    RoomNumbers.fromJson(json.decode(str));
+RoomNumbersWithApartList RoomNumbersWithApartListFromJson(String str) =>
+    RoomNumbersWithApartList.fromJson(json.decode(str));
 
-String roomNumbersToJson(RoomNumbers data) => json.encode(data.toJson());
+String RoomNumbersWithApartListToJson(RoomNumbersWithApartList data) =>
+    json.encode(data.toJson());
 
 @JsonSerializable()
-class RoomNumbers {
-  RoomNumbers({
+class RoomNumbersWithApartList {
+  RoomNumbersWithApartList({
     required this.data,
   });
 
   List<GetRooms> data;
 
-  factory RoomNumbers.fromJson(Map<String, dynamic> json) => RoomNumbers(
+  factory RoomNumbersWithApartList.fromJson(Map<String, dynamic> json) =>
+      RoomNumbersWithApartList(
         data:
             List<GetRooms>.from(json["data"].map((x) => GetRooms.fromJson(x))),
       );

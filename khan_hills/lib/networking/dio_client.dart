@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
-import 'package:khan_hills/models/get_room_numbers.dart';
+import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/networking/dio_interceptor.dart';
 import 'package:khan_hills/utils/constans.dart';
 
@@ -52,11 +52,11 @@ class DioClient {
     return brandList;
   }
 
-  Future<RoomNumbers?> getRoomList() async {
-    RoomNumbers? roomNumbers;
+  Future<RoomNumbersWithApartList?> getRoomList() async {
+    RoomNumbersWithApartList? roomNumbers;
     try {
       Response roomData = await _dio.get("mn/rooms-aparts?type=app");
-      roomNumbers = RoomNumbers.fromJson(roomData.data);
+      roomNumbers = RoomNumbersWithApartList.fromJson(roomData.data);
     } on DioError catch (e) {
       if (e.response != null) {
         print('Dio error!');

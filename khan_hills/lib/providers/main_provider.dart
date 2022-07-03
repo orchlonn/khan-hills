@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
-import 'package:khan_hills/models/get_room_numbers.dart';
+import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/networking/dio_client.dart';
 
 class MainProvider extends ChangeNotifier {
@@ -17,7 +17,7 @@ class MainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  RoomNumbers? getRooms;
+  RoomNumbersWithApartList? getRooms;
   Future<void> fetchRooms(context) async {
     getRooms = await DioClient().getRoomList();
     notifyListeners();

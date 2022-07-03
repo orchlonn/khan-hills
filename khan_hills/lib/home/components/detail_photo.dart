@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:khan_hills/models/get_room_numbers.dart';
+import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/room_detail/view/room_detail.dart';
 import 'package:khan_hills/utils/colors.dart';
 

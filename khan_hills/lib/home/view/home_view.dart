@@ -14,7 +14,7 @@ import 'package:khan_hills/home/components/outside_btn.dart';
 import 'package:khan_hills/home/components/see_outside.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
-import 'package:khan_hills/models/get_room_numbers.dart';
+import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/notf/view/notf.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
