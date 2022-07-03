@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:khan_hills/block_detail/components/drop_down_btn.dart';
+import 'package:khan_hills/home/components/detail_photo.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
@@ -11,22 +13,20 @@ class BlockDetail extends StatefulWidget {
 
 class _BlockDetailState extends State<BlockDetail> {
   @override
-  List<String> items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-  String? selectedItem = 'Item 1';
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Stack(
       children: [
-        Material(
-          child: Container(
-            child: Image.asset("assets/images/murui_bg.png"),
-          ),
-        ),
+        Container(
+            width: size.width,
+            height: size.height,
+            color: const Color(0xFFe2d8e1)),
+        Image.asset("assets/images/image_murui_saaral.png"),
         Scaffold(
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.transparent,
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
@@ -51,74 +51,44 @@ class _BlockDetailState extends State<BlockDetail> {
             ],
           ),
           body: Container(
+            height: size.height,
+            width: size.width,
+            padding: EdgeInsets.symmetric(horizontal: size.width * .04),
             decoration: const BoxDecoration(
-              color: Colors.teal,
+              color: Color(0xFFfafafc),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                Container(
-                  width: 100,
-                  child: DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 3, color: Colors.red)),
-                    ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            ))
-                        .toList(),
-                    onChanged: (item) => setState(() {
-                      selectedItem = item;
-                    }),
-                    value: selectedItem,
-                  ),
+                SizedBox(height: size.height * .02),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [DropDownBtn(), DropDownBtn(), DropDownBtn()],
                 ),
-                Container(
-                  width: 100,
-                  child: DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 3, color: Colors.red)),
-                    ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            ))
-                        .toList(),
-                    onChanged: (item) => setState(() {
-                      selectedItem = item;
-                    }),
-                    value: selectedItem,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 3, color: Colors.red)),
-                    ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            ))
-                        .toList(),
-                    onChanged: (item) => setState(() {
-                      selectedItem = item;
-                    }),
-                    value: selectedItem,
-                  ),
-                ),
+                SizedBox(height: size.height * .02),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("5 өрөө",
+                        style: CustomStyles.textSmallmSemiBold(context))),
+                SizedBox(height: size.height * .01),
+                // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                // SizedBox(height: size.height * .01),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("4 өрөө",
+                        style: CustomStyles.textSmallmSemiBold(context))),
+                SizedBox(height: size.height * .01),
+                // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                // SizedBox(height: size.height * .01),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("3 өрөө",
+                        style: CustomStyles.textSmallmSemiBold(context))),
+                SizedBox(height: size.height * .01),
+                // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                // SizedBox(height: size.height * .01),
               ],
             ),
           ),

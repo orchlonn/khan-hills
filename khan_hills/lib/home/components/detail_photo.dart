@@ -40,23 +40,10 @@ class DetailPhoto extends StatelessWidget {
                   image: NetworkImage(photoUrl[index].thumbImg),
                 ),
               ),
-              // child: FittedBox(
-              //   child: CachedNetworkImage(
-              //     imageUrl: photoUrl[index].thumbImg,
-              //     fit: BoxFit
-              //         .fill, // I thought this would fill up my Container but it doesn't
-              //   ),
-              // ),
             ),
           );
-          // return SizedBox(
-          //   width: size.width * .6,
-          //   child: FittedBox(
-          //     child: Image.asset(photoUrl, fit: BoxFit.fill),
-          //   ),
-          // );
         }),
-        itemCount: 4,
+        itemCount: photoUrl.length,
       ),
     );
   }

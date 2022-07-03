@@ -65,6 +65,15 @@ extension CustomStyles on TextTheme {
     );
   }
 
+  static TextStyle textLittleMiniSemiBold(BuildContext context,
+      {Color textColor = blackColor}) {
+    return TextStyle(
+      color: textColor,
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle textLargeBold(BuildContext context,
       {Color textColor = blackColor}) {
     return TextStyle(

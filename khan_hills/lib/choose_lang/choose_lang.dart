@@ -38,8 +38,6 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
       var getBannerLists = value.getBannerList?.data;
       var getBrandList = value.getBrandList?.data;
       var getRooms = value.getRooms?.data;
-      print(
-          "getrooms from choose lang file nigge : ${getBrandList.runtimeType}");
       return Stack(
         children: [
           Image.asset(

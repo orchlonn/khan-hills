@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:khan_hills/models/get_brands.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class DetailMaterial extends StatelessWidget {
-  const DetailMaterial({Key? key, required this.photoUrl}) : super(key: key);
-  final String photoUrl;
+  DetailMaterial({Key? key, required this.getBrandList}) : super(key: key);
+
+  List<GetBrandList> getBrandList;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * .19,
+      height: size.height * .18,
       width: size.width,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -19,28 +21,23 @@ class DetailMaterial extends StatelessWidget {
             margin: const EdgeInsets.all(10),
             width: size.width * .3,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: primaryColor.withOpacity(0.3),
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                  offset: const Offset(3, 5),
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: const Offset(1, 3),
                 ),
               ],
-              image: const DecorationImage(
+              image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage("https://picsum.photos/250?image=9"),
+                image: NetworkImage(getBrandList[index].thumbImg),
               ),
             ),
           );
-          // return SizedBox(
-          //   width: size.width * .6,
-          //   child: FittedBox(
-          //     child: Image.asset(photoUrl, fit: BoxFit.fill),
-          //   ),
-          // );
         }),
-        itemCount: 4,
+        itemCount: getBrandList.length,
       ),
     );
   }

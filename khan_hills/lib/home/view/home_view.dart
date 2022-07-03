@@ -229,13 +229,16 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(width: size.width * .42),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    currentIndex = 2;
+                                  });
+                                },
                                 icon: const Icon(Icons.navigate_next))
                           ],
                         ),
-                        // material detail
-                        const DetailMaterial(
-                            photoUrl: "assets/images/img_5rooms.png"),
+                        //! material detail
+                        DetailMaterial(getBrandList: widget.getBrandList),
                         SizedBox(height: size.height * .01),
                         // location
                         Align(
