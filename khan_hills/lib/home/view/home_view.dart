@@ -322,7 +322,7 @@ class _HomeState extends State<Home> {
                           brandData: widget.getBrandList,
                         )
                       //! current index = 3 buyu contact
-                      : ContactPage(),
+                      : const ContactPage(),
 
           //! bottom navbar
           bottomNavigationBar: Container(
