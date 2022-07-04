@@ -8,7 +8,7 @@ part of 'get_model_list.dart';
 
 ModelList _$ModelListFromJson(Map<String, dynamic> json) => ModelList(
       data: (json['data'] as List<dynamic>)
-          .map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .map((e) => ModelData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

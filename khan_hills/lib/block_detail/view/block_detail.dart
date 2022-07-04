@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/components/drop_down_btn.dart';
 import 'package:khan_hills/block_detail/provider/block_detail_provider.dart';
-import 'package:khan_hills/home/components/detail_photo.dart';
+
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +30,8 @@ class _BlockDetailState extends State<BlockDetail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<BlockDetailProvider>(builder: ((context, value, child) {
+      var getModel = value.getModelList?.data;
+      print("bishshshh    ${getModel?[1].runtimeType}");
       return Stack(
         children: [
           Container(
@@ -43,9 +45,7 @@ class _BlockDetailState extends State<BlockDetail> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               leading: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -81,7 +81,11 @@ class _BlockDetailState extends State<BlockDetail> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [DropDownBtn(), DropDownBtn(), DropDownBtn()],
+                    children: [
+                      DropDownBtn(modelData: getModel),
+                      DropDownBtn(modelData: getModel),
+                      DropDownBtn(modelData: getModel),
+                    ],
                   ),
                   SizedBox(height: size.height * .02),
                   Align(

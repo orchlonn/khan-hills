@@ -17,10 +17,11 @@ class ModelList {
     required this.data,
   });
 
-  List<Datum> data;
+  List<ModelData> data;
 
   factory ModelList.fromJson(Map<String, dynamic> json) => ModelList(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<ModelData>.from(
+            json["data"].map((x) => ModelData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +29,8 @@ class ModelList {
       };
 }
 
-class Datum {
-  Datum({
+class ModelData {
+  ModelData({
     required this.name,
     required this.id,
   });
@@ -37,7 +38,7 @@ class Datum {
   String name;
   int id;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory ModelData.fromJson(Map<String, dynamic> json) => ModelData(
         name: json["name"],
         id: json["id"],
       );

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/provider/block_detail_provider.dart';
 import 'package:khan_hills/choose_lang/choose_lang.dart';
-import 'package:khan_hills/home/components/brand_detail.dart';
 import 'package:khan_hills/providers/main_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
+      ChangeNotifierProvider<BlockDetailProvider>(
+          create: (_) => BlockDetailProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,14 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
-          ChangeNotifierProvider<BlockDetailProvider>(
-              create: (_) => BlockDetailProvider()),
-        ],
-        child: ChooseLanguage(),
-      ),
+      home: const ChooseLanguage(),
     );
   }
 }
