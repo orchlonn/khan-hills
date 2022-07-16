@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/components/drop_down_btn.dart';
 import 'package:khan_hills/block_detail/provider/block_detail_provider.dart';
-
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +18,8 @@ class _BlockDetailState extends State<BlockDetail> {
     super.initState();
     final data = Provider.of<BlockDetailProvider>(context, listen: false);
     data.fetchModelList(context);
+    data.fetchFloorList(context);
+    data.fetchRoomSize(context);
   }
 
   @override
@@ -31,7 +32,9 @@ class _BlockDetailState extends State<BlockDetail> {
     Size size = MediaQuery.of(context).size;
     return Consumer<BlockDetailProvider>(builder: ((context, value, child) {
       var getModel = value.getModelList?.data;
-      print("bishshshh    ${getModel?[1].runtimeType}");
+      var getFloor = value.getFloorList?.data;
+      var getRoomSize = value.getRoomSize?.data;
+      print("bishshshh    ${getRoomSize?[0].name}");
       return Stack(
         children: [
           Container(
@@ -82,9 +85,9 @@ class _BlockDetailState extends State<BlockDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DropDownBtn(modelData: getModel),
-                      DropDownBtn(modelData: getModel),
-                      DropDownBtn(modelData: getModel),
+                      DropDownBtn(modelData: getModel, hintText: "Хэмжээ"),
+                      DropDownBtn(modelData: getFloor, hintText: "Давхар"),
+                      DropDownBtn(modelData: getRoomSize, hintText: "Загвар"),
                     ],
                   ),
                   SizedBox(height: size.height * .02),

@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:khan_hills/block_detail/model/get_model_list.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
-
 import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/networking/dio_interceptor.dart';
 import 'package:khan_hills/utils/constans.dart';
@@ -76,8 +75,8 @@ class DioClient {
   Future<ModelList?> getModelList() async {
     ModelList? modelList;
     try {
-      Response roomData = await _dio.get("mn/model");
-      modelList = ModelList.fromJson(roomData.data);
+      Response modelData = await _dio.get("mn/model");
+      modelList = ModelList.fromJson(modelData.data);
     } on DioError catch (e) {
       if (e.response != null) {
         print('Dio error!');
@@ -90,5 +89,44 @@ class DioClient {
       }
     }
     return modelList;
+  }
+
+  Future<ModelList?> getFloorList() async {
+    ModelList? floorList;
+    try {
+      Response floorData = await _dio.get("mn/floor");
+      floorList = ModelList.fromJson(floorData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+    return floorList;
+  }
+
+  Future<ModelList?> getRoomSize() async {
+    ModelList? sizeList;
+    try {
+      Response sizeData = await _dio.get("mn/size");
+      sizeList = ModelList.fromJson(sizeData.data);
+      // print(sizeList.data[0].name);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+    return sizeList;
   }
 }

@@ -8,4 +8,16 @@ class BlockDetailProvider extends ChangeNotifier {
     getModelList = await DioClient().getModelList();
     notifyListeners();
   }
+
+  ModelList? getFloorList;
+  Future<void> fetchFloorList(context) async {
+    getFloorList = await DioClient().getFloorList();
+    notifyListeners();
+  }
+
+  ModelList? getRoomSize;
+  Future<void> fetchRoomSize(context) async {
+    getRoomSize = await DioClient().getRoomSize();
+    notifyListeners();
+  }
 }
