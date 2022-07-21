@@ -15,10 +15,10 @@ class DioClient {
     ),
   )..interceptors.add(Logging());
 
-  Future<GetBannerList?> getBannerLists() async {
+  Future<GetBannerList?> getBannerLists(String lang) async {
     GetBannerList? getBannerList;
     try {
-      Response bannerData = await _dio.get("mn/notifications?isBanner=1");
+      Response bannerData = await _dio.get("${lang}/notifications?isBanner=1");
       getBannerList = GetBannerList.fromJson(bannerData.data);
     } on DioError catch (e) {
       if (e.response != null) {
@@ -34,10 +34,10 @@ class DioClient {
     return getBannerList;
   }
 
-  Future<BrandList?> getBrandsList() async {
+  Future<BrandList?> getBrandsList(String lang) async {
     BrandList? brandList;
     try {
-      Response brandData = await _dio.get("mn/brand");
+      Response brandData = await _dio.get("${lang}/brand");
       brandList = BrandList.fromJson(brandData.data);
     } on DioError catch (e) {
       if (e.response != null) {
@@ -53,10 +53,10 @@ class DioClient {
     return brandList;
   }
 
-  Future<RoomNumbersWithApartList?> getRoomList() async {
+  Future<RoomNumbersWithApartList?> getRoomList(String lang) async {
     RoomNumbersWithApartList? roomNumbers;
     try {
-      Response roomData = await _dio.get("mn/rooms-aparts?type=app");
+      Response roomData = await _dio.get("${lang}/rooms-aparts?type=app");
       roomNumbers = RoomNumbersWithApartList.fromJson(roomData.data);
     } on DioError catch (e) {
       if (e.response != null) {
@@ -72,10 +72,10 @@ class DioClient {
     return roomNumbers;
   }
 
-  Future<ModelList?> getModelList() async {
+  Future<ModelList?> getModelList(String lang) async {
     ModelList? modelList;
     try {
-      Response modelData = await _dio.get("mn/model");
+      Response modelData = await _dio.get("${lang}/model");
       modelList = ModelList.fromJson(modelData.data);
     } on DioError catch (e) {
       if (e.response != null) {
@@ -91,10 +91,10 @@ class DioClient {
     return modelList;
   }
 
-  Future<ModelList?> getFloorList() async {
+  Future<ModelList?> getFloorList(String lang) async {
     ModelList? floorList;
     try {
-      Response floorData = await _dio.get("mn/floor");
+      Response floorData = await _dio.get("${lang}/floor");
       floorList = ModelList.fromJson(floorData.data);
     } on DioError catch (e) {
       if (e.response != null) {
@@ -110,12 +110,11 @@ class DioClient {
     return floorList;
   }
 
-  Future<ModelList?> getRoomSize() async {
+  Future<ModelList?> getRoomSize(String lang) async {
     ModelList? sizeList;
     try {
-      Response sizeData = await _dio.get("mn/size");
+      Response sizeData = await _dio.get("${lang}/size");
       sizeList = ModelList.fromJson(sizeData.data);
-      // print(sizeList.data[0].name);
     } on DioError catch (e) {
       if (e.response != null) {
         print('Dio error!');

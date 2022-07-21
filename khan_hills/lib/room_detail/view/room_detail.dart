@@ -9,7 +9,8 @@ import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class RoomDetail extends StatefulWidget {
-  const RoomDetail({Key? key}) : super(key: key);
+  String lang;
+  RoomDetail({Key? key, required this.lang}) : super(key: key);
 
   @override
   State<RoomDetail> createState() => _RoomDetailState();
@@ -72,7 +73,7 @@ class _RoomDetailState extends State<RoomDetail> {
                         Navigator.pop(context);
                       },
                     ),
-                    title: Text("Өрөө",
+                    title: Text(widget.lang == "mn" ? "Өрөө" : "Room",
                         style: CustomStyles.textMediumBold(context)),
                     actions: [
                       Container(
@@ -96,11 +97,10 @@ class _RoomDetailState extends State<RoomDetail> {
                           children: [
                             ChooseBlock(
                               width: .29,
-                              activeIcon:
-                                  "assets/images/img_orginization_active.png",
+                              activeIcon: "assets/images/img_photo_active.png",
                               nonActiveIcon:
-                                  "assets/images/img_orginization_nonActive.png",
-                              title: "Зураг",
+                                  "assets/images/img_photo_nonActive.png",
+                              title: widget.lang == "mn" ? "Зураг" : "Photo",
                               onPressed: (() {
                                 setState(() {
                                   activeBtnIndex = 0;
@@ -111,11 +111,10 @@ class _RoomDetailState extends State<RoomDetail> {
                             const Spacer(),
                             OutsideButton(
                               width: .29,
-                              title: "Видео",
-                              activeImage:
-                                  "assets/images/img_experience_active.png",
+                              title: widget.lang == "mn" ? "Видео" : "Video",
+                              activeImage: "assets/images/img_video_active.png",
                               nonActiveImage:
-                                  "assets/images/img_experience_nonActive.png",
+                                  "assets/images/img_video_nonActive.png",
                               onPressed: (() {
                                 setState(() {
                                   activeBtnIndex = 1;
@@ -127,10 +126,9 @@ class _RoomDetailState extends State<RoomDetail> {
                             ThirdBtn(
                               width: .29,
                               title: "360",
-                              activeImage:
-                                  "assets/images/img_experience_active.png",
+                              activeImage: "assets/images/img_360_active.png",
                               nonActiveImage:
-                                  "assets/images/img_experience_nonActive.png",
+                                  "assets/images/img_360_nonActive.png",
                               onPressed: (() {
                                 setState(() {
                                   Navigator.push(
@@ -148,7 +146,7 @@ class _RoomDetailState extends State<RoomDetail> {
                         SizedBox(height: size.height * .025),
                         activeBtnIndex == 0
                             //! Photo side
-                            ? PhotoSide()
+                            ? PhotoSide(lang: widget.lang)
                             : activeBtnIndex == 1
                                 //! video side
                                 ? Column(
@@ -163,7 +161,9 @@ class _RoomDetailState extends State<RoomDetail> {
                                         width: size.width,
                                         child: Center(
                                           child: Text(
-                                            "Та видеогоо тоглуулж өрөөний дэлгэрэнгүйг үзээрэй",
+                                            widget.lang == "mn"
+                                                ? "Та видеогоо тоглуулж өрөөний дэлгэрэнгүйг үзээрэй"
+                                                : "Play the video to see the details of the room",
                                             style: CustomStyles
                                                 .textLittleMiniNormal(context,
                                                     textColor: primaryColor),

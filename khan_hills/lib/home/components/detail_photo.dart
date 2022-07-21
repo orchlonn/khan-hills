@@ -4,7 +4,9 @@ import 'package:khan_hills/room_detail/view/room_detail.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class DetailPhoto extends StatelessWidget {
-  const DetailPhoto({Key? key, required this.photoUrl}) : super(key: key);
+  String lang;
+  DetailPhoto({Key? key, required this.lang, required this.photoUrl})
+      : super(key: key);
   final List<Apart> photoUrl;
 
   @override
@@ -21,7 +23,9 @@ class DetailPhoto extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => const RoomDetail())));
+                      builder: ((context) => RoomDetail(
+                            lang: lang,
+                          ))));
             },
             child: Container(
               margin: const EdgeInsets.all(10),

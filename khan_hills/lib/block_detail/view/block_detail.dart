@@ -6,7 +6,8 @@ import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
 
 class BlockDetail extends StatefulWidget {
-  const BlockDetail({Key? key}) : super(key: key);
+  String lang;
+  BlockDetail({Key? key, required this.lang}) : super(key: key);
 
   @override
   State<BlockDetail> createState() => _BlockDetailState();
@@ -17,9 +18,9 @@ class _BlockDetailState extends State<BlockDetail> {
   void initState() {
     super.initState();
     final data = Provider.of<BlockDetailProvider>(context, listen: false);
-    data.fetchModelList(context);
-    data.fetchFloorList(context);
-    data.fetchRoomSize(context);
+    data.fetchModelList(context, widget.lang);
+    data.fetchFloorList(context, widget.lang);
+    data.fetchRoomSize(context, widget.lang);
   }
 
   @override
@@ -34,7 +35,6 @@ class _BlockDetailState extends State<BlockDetail> {
       var getModel = value.getModelList?.data;
       var getFloor = value.getFloorList?.data;
       var getRoomSize = value.getRoomSize?.data;
-      print("bishshshh    ${getRoomSize?[0].name}");
       return Stack(
         children: [
           Container(
@@ -61,10 +61,8 @@ class _BlockDetailState extends State<BlockDetail> {
               actions: [
                 IconButton(
                   onPressed: () {},
-                  icon: Image.asset(
-                    "assets/images/img_phone_white.png",
-                    width: size.width * .055,
-                  ),
+                  icon: Image.asset("assets/images/img_phone_white.png",
+                      width: size.width * .055),
                 ),
               ],
             ),
@@ -85,33 +83,39 @@ class _BlockDetailState extends State<BlockDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DropDownBtn(modelData: getModel, hintText: "Хэмжээ"),
-                      DropDownBtn(modelData: getFloor, hintText: "Давхар"),
-                      DropDownBtn(modelData: getRoomSize, hintText: "Загвар"),
+                      DropDownBtn(
+                          modelData: getModel,
+                          hintText: widget.lang == "mn" ? "Хэмжээ" : "Size"),
+                      DropDownBtn(
+                          modelData: getFloor,
+                          hintText: widget.lang == "mn" ? "Давхар" : "Floor"),
+                      DropDownBtn(
+                          modelData: getRoomSize,
+                          hintText: widget.lang == "mn" ? "Загвар" : "Model"),
                     ],
                   ),
                   SizedBox(height: size.height * .02),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("5 өрөө",
-                          style: CustomStyles.textSmallmSemiBold(context))),
-                  SizedBox(height: size.height * .01),
-                  // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // Align(
+                  //     alignment: Alignment.centerLeft,
+                  //     child: Text("5 өрөө",
+                  //         style: CustomStyles.textSmallmSemiBold(context))),
                   // SizedBox(height: size.height * .01),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("4 өрөө",
-                          style: CustomStyles.textSmallmSemiBold(context))),
-                  SizedBox(height: size.height * .01),
-                  // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // // SizedBox(height: size.height * .01),
+                  // Align(
+                  //     alignment: Alignment.centerLeft,
+                  //     child: Text("4 өрөө",
+                  //         style: CustomStyles.textSmallmSemiBold(context))),
                   // SizedBox(height: size.height * .01),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("3 өрөө",
-                          style: CustomStyles.textSmallmSemiBold(context))),
-                  SizedBox(height: size.height * .01),
-                  // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // // SizedBox(height: size.height * .01),
+                  // Align(
+                  //     alignment: Alignment.centerLeft,
+                  //     child: Text("3 өрөө",
+                  //         style: CustomStyles.textSmallmSemiBold(context))),
                   // SizedBox(height: size.height * .01),
+                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
+                  // // SizedBox(height: size.height * .01),
                 ],
               ),
             ),

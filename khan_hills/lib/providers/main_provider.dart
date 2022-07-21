@@ -6,20 +6,20 @@ import 'package:khan_hills/networking/dio_client.dart';
 
 class MainProvider extends ChangeNotifier {
   GetBannerList? getBannerList;
-  Future<void> fetchBannerList(context) async {
-    getBannerList = await DioClient().getBannerLists();
+  Future<void> fetchBannerList(context, String lang) async {
+    getBannerList = await DioClient().getBannerLists(lang);
     notifyListeners();
   }
 
   BrandList? getBrandList;
-  Future<void> fetchBrandList(context) async {
-    getBrandList = await DioClient().getBrandsList();
+  Future<void> fetchBrandList(context, String lang) async {
+    getBrandList = await DioClient().getBrandsList(lang);
     notifyListeners();
   }
 
   RoomNumbersWithApartList? getRooms;
-  Future<void> fetchRooms(context) async {
-    getRooms = await DioClient().getRoomList();
+  Future<void> fetchRooms(context, String lang) async {
+    getRooms = await DioClient().getRoomList(lang);
     notifyListeners();
   }
 }

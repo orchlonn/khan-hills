@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/view/block_detail.dart';
 
 class ChooseBlockPhoto extends StatelessWidget {
-  const ChooseBlockPhoto({
-    Key? key,
-  }) : super(key: key);
+  String lang;
+  ChooseBlockPhoto({Key? key, required this.lang}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,8 @@ class ChooseBlockPhoto extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const BlockDetail()),
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
                 );
               },
               child: Image.asset(
@@ -50,7 +50,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .418, top: size.height * .032),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_b.png",
                 height: size.height * .04,
@@ -62,7 +68,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .72, top: size.height * .032),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_c.png",
                 height: size.height * .04,
@@ -74,7 +86,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .168, top: size.height * .185),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_d.png",
                 height: size.height * .04,
@@ -86,7 +104,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .415, top: size.height * .185),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_e.png",
                 height: size.height * .04,
@@ -98,7 +122,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .66, top: size.height * .185),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_f.png",
                 height: size.height * .04,
@@ -110,7 +140,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .05, top: size.height * .305),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_g.png",
                 width: size.width * .09,
@@ -122,7 +158,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .295, top: size.height * .305),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_h.png",
                 width: size.width * .09,
@@ -134,7 +176,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .535, top: size.height * .305),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_i.png",
                 width: size.width * .09,
@@ -146,7 +194,13 @@ class ChooseBlockPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: size.width * .78, top: size.height * .305),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlockDetail(lang: lang)),
+                );
+              },
               child: Image.asset(
                 "assets/images/img_choose_block_j.png",
                 width: size.width * .09,

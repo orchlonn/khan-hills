@@ -3,9 +3,8 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class ContactPage extends StatelessWidget {
-  const ContactPage({
-    Key? key,
-  }) : super(key: key);
+  String lang;
+  ContactPage({Key? key, required this.lang}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,30 +16,34 @@ class ContactPage extends StatelessWidget {
           SizedBox(height: size.height * .03),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text("Хотхоны байршил",
+              child: Text(
+                  lang == "mn" ? "Хотхоны байршил" : "Apartment location",
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .01),
           Image.asset("assets/images/img_map.png"),
           SizedBox(height: size.height * .01),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text("Хотхоны байршил",
+              child: Text(
+                  lang == "mn" ? "Хотхоны байршил" : "Apartment location",
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
-          const Text(
-              "Хан уул 17-р хороо Khan Hills хотхон 523А байр 101 тоот Mogul ibiz LLC",
+          Text(
+              lang == "mn"
+                  ? "Хан уул 17-р хороо Khan Hills хотхон 523А байр 101 тоот Mogul ibiz LLC"
+                  : "Mogul ibiz LLC, Building 523A, Building 101, Khan Hills, Khan Uul District 17",
               style: TextStyle(height: 1.3)),
           SizedBox(height: size.height * .02),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text("Утасны дугаар",
+              child: Text(lang == "mn" ? "Утасны дугаар" : "Phone number",
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
           const Align(alignment: Alignment.centerLeft, child: Text("91118859")),
           SizedBox(height: size.height * .02),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text("Шууд залгах",
+              child: Text(lang == "mn" ? "Шууд залгах" : "Call directly",
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
           PrimaryButton(
@@ -50,12 +53,13 @@ class ContactPage extends StatelessWidget {
           SizedBox(height: size.height * .02),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text("Танилцуулга татах",
+              child: Text(
+                  lang == "mn" ? "Танилцуулга татах" : "Download introduction",
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
           PrimaryButton(
             imageUrl: "assets/images/img_download.png",
-            btnText: "PDF татах",
+            btnText: lang == "mn" ? "PDF татах" : "Download PDF",
           ),
         ],
       ),

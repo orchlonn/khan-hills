@@ -4,20 +4,20 @@ import 'package:khan_hills/networking/dio_client.dart';
 
 class BlockDetailProvider extends ChangeNotifier {
   ModelList? getModelList;
-  Future<void> fetchModelList(context) async {
-    getModelList = await DioClient().getModelList();
+  Future<void> fetchModelList(context, String lang) async {
+    getModelList = await DioClient().getModelList(lang);
     notifyListeners();
   }
 
   ModelList? getFloorList;
-  Future<void> fetchFloorList(context) async {
-    getFloorList = await DioClient().getFloorList();
+  Future<void> fetchFloorList(context, String lang) async {
+    getFloorList = await DioClient().getFloorList(lang);
     notifyListeners();
   }
 
   ModelList? getRoomSize;
-  Future<void> fetchRoomSize(context) async {
-    getRoomSize = await DioClient().getRoomSize();
+  Future<void> fetchRoomSize(context, String lang) async {
+    getRoomSize = await DioClient().getRoomSize(lang);
     notifyListeners();
   }
 }

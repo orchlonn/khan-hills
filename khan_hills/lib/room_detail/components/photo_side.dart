@@ -4,7 +4,8 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class PhotoSide extends StatefulWidget {
-  const PhotoSide({Key? key}) : super(key: key);
+  String lang;
+  PhotoSide({Key? key, required this.lang}) : super(key: key);
 
   @override
   State<PhotoSide> createState() => _PhotoSideState();
@@ -26,7 +27,9 @@ class _PhotoSideState extends State<PhotoSide> {
           width: size.width,
           child: Center(
             child: Text(
-              "Та өрөөн дээр дарж дэлгэрэнгүй зураг үзээрэй",
+              widget.lang == "mn"
+                  ? "Та өрөөн дээр дарж дэлгэрэнгүй зураг үзээрэй"
+                  : "Click on the room to see more pictures",
               style: CustomStyles.textLittleMiniNormal(context,
                   textColor: primaryColor),
             ),
