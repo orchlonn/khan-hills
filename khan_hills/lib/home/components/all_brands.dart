@@ -5,8 +5,10 @@ import 'package:khan_hills/models/get_brands.dart';
 import 'package:khan_hills/utils/colors.dart';
 
 class BrandsPage extends StatelessWidget {
+  String lang;
   List<GetBrandList>? brandData;
-  BrandsPage({Key? key, required this.brandData}) : super(key: key);
+  BrandsPage({Key? key, required this.brandData, required this.lang})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,9 @@ class BrandsPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const BrandDetail()));
+                                builder: (context) => BrandDetail(
+                                      lang: lang,
+                                    )));
                       },
                       child: CachedNetworkImage(
                           imageUrl: brandData![index].thumbImg)),

@@ -4,6 +4,7 @@ import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
 import 'package:khan_hills/models/get_room_with_apart.dart';
 import 'package:khan_hills/networking/dio_interceptor.dart';
+import 'package:khan_hills/notf/model/notf_list_model.dart';
 import 'package:khan_hills/utils/constans.dart';
 
 class DioClient {
@@ -127,5 +128,24 @@ class DioClient {
       }
     }
     return sizeList;
+  }
+
+  Future<NotificationList?> getNotfList(String lang) async {
+    NotificationList? notificationList;
+    try {
+      Response sizeData = await _dio.get("${lang}/notifications");
+      notificationList = NotificationList.fromJson(sizeData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+    return notificationList;
   }
 }

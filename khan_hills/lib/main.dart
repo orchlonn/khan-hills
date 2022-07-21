@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/provider/block_detail_provider.dart';
 import 'package:khan_hills/choose_lang/choose_lang.dart';
+import 'package:khan_hills/notf/provider/notf_list_provider.dart';
 import 'package:khan_hills/providers/main_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
+      ChangeNotifierProvider<NotfDetail>(create: (_) => NotfDetail()),
       ChangeNotifierProvider<BlockDetailProvider>(
           create: (_) => BlockDetailProvider()),
     ],

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:khan_hills/home/components/notf_detail.dart';
+
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
@@ -52,13 +52,7 @@ class CarouselSliderPage extends StatelessWidget {
                           ),
                           const Spacer(),
                           IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: ((context) =>
-                                            const NotfDetail())));
-                              },
+                              onPressed: () {},
                               icon: Image.asset(
                                 "assets/images/icon-push.png",
                                 width: size.width * .02,

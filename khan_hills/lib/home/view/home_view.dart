@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const NotificationsPage()));
+                                      NotificationsPage(lang: widget.lang)));
                         },
                         child: Container(
                             margin: EdgeInsets.only(right: size.width * .05),
@@ -110,8 +110,8 @@ class _HomeState extends State<Home> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NotificationsPage()));
+                                      builder: (context) => NotificationsPage(
+                                          lang: widget.lang)));
                             },
                             child: Container(
                                 margin:
@@ -342,7 +342,7 @@ class _HomeState extends State<Home> {
                       )
                     //! current index = 2 buyu brands
                     : currentIndex == 2
-                        ? BrandsPage(brandData: getBrandList)
+                        ? BrandsPage(brandData: getBrandList, lang: widget.lang)
                         //! current index = 3 buyu contact
                         : ContactPage(lang: widget.lang),
 
