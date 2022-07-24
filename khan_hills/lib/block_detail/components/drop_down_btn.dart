@@ -22,8 +22,6 @@ class _DropDownBtnState extends State<DropDownBtn> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      // padding: EdgeInsets.symmetric(
-      //     horizontal: size.width * .04, vertical: size.height * .01),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
@@ -38,7 +36,7 @@ class _DropDownBtnState extends State<DropDownBtn> {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton2(
-          buttonPadding: EdgeInsets.symmetric(horizontal: size.width * .01),
+          buttonPadding: EdgeInsets.symmetric(horizontal: size.width * .02),
           icon: Icon(Icons.keyboard_arrow_down,
               size: 15, color: isActive ? whiteColor : primaryColor),
           hint: Text(
@@ -49,13 +47,17 @@ class _DropDownBtnState extends State<DropDownBtn> {
           items: widget.modelData!
               .map((item) => DropdownMenuItem<String>(
                     value: item.name,
-                    child: Text(item.name),
+                    child: Text(
+                      item.name,
+                      style: CustomStyles.textMinimSemiBold(context),
+                    ),
                   ))
               .toList(),
           value: selectedValue,
           onChanged: (value) {
             setState(() {
               selectedValue = value as String;
+              isActive = true;
             });
           },
           buttonHeight: size.height * .05,

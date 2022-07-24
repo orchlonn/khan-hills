@@ -68,7 +68,9 @@ class _HomeState extends State<Home> {
                     leadingWidth: size.width * .15,
                     leading: Container(
                       margin: EdgeInsets.only(left: size.width * .05),
-                      child: Image.asset("assets/images/img_mongolia.png"),
+                      child: widget.lang == "mn"
+                          ? Image.asset("assets/images/img_mongolia.png")
+                          : Image.asset("assets/images/img_america.png"),
                     ),
                     title: Text(
                         widget.lang == "en" ? "Khan Hills" : "Хан хиллс",
@@ -98,7 +100,9 @@ class _HomeState extends State<Home> {
                         leadingWidth: size.width * .15,
                         leading: Container(
                           margin: EdgeInsets.only(left: size.width * .05),
-                          child: Image.asset("assets/images/img_mongolia.png"),
+                          child: widget.lang == "mn"
+                              ? Image.asset("assets/images/img_mongolia.png")
+                              : Image.asset("assets/images/img_america.png"),
                         ),
                         title: Text(
                           widget.lang == "mn" ? "Брендүүд" : "Brands",

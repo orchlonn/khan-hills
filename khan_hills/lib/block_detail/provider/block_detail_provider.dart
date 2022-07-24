@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khan_hills/block_detail/model/aparts_with_query.dart';
 import 'package:khan_hills/block_detail/model/get_model_list.dart';
 import 'package:khan_hills/networking/dio_client.dart';
 
@@ -18,6 +19,12 @@ class BlockDetailProvider extends ChangeNotifier {
   ModelList? getRoomSize;
   Future<void> fetchRoomSize(context, String lang) async {
     getRoomSize = await DioClient().getRoomSize(lang);
+    notifyListeners();
+  }
+
+  RoomsWithQuery? getRoomsWithQuery;
+  Future<void> fetchRoomWIthQuery(context, String lang) async {
+    getRoomsWithQuery = await DioClient().getRoomsWithQuery(lang);
     notifyListeners();
   }
 }

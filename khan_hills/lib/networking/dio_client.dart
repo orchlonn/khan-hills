@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:khan_hills/block_detail/model/aparts_with_query.dart';
 import 'package:khan_hills/block_detail/model/get_model_list.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
 import 'package:khan_hills/models/get_brands.dart';
@@ -147,5 +148,30 @@ class DioClient {
       }
     }
     return notificationList;
+  }
+
+  Future<RoomsWithQuery?> getRoomsWithQuery(String lang) async {
+    RoomsWithQuery? roomsWithQuery;
+    try {
+      Response responseData = await _dio.get(
+        "${lang}/rooms-aparts",
+        queryParameters: {
+          "type": "app",
+          "block": 1,
+        },
+      );
+      roomsWithQuery = RoomsWithQuery.fromJson(responseData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+    return roomsWithQuery;
   }
 }

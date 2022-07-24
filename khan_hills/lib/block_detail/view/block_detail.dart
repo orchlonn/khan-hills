@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/components/drop_down_btn.dart';
+import 'package:khan_hills/block_detail/components/query_room.dart';
 import 'package:khan_hills/block_detail/provider/block_detail_provider.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
@@ -21,6 +22,7 @@ class _BlockDetailState extends State<BlockDetail> {
     data.fetchModelList(context, widget.lang);
     data.fetchFloorList(context, widget.lang);
     data.fetchRoomSize(context, widget.lang);
+    data.fetchRoomWIthQuery(context, widget.lang);
   }
 
   @override
@@ -35,6 +37,8 @@ class _BlockDetailState extends State<BlockDetail> {
       var getModel = value.getModelList?.data;
       var getFloor = value.getFloorList?.data;
       var getRoomSize = value.getRoomSize?.data;
+      var getRoomsWithQuery = value.getRoomsWithQuery?.data;
+      print("ggg : ${getRoomsWithQuery![0].name}");
       return Stack(
         children: [
           Container(
@@ -95,27 +99,30 @@ class _BlockDetailState extends State<BlockDetail> {
                     ],
                   ),
                   SizedBox(height: size.height * .02),
-                  // Align(
-                  //     alignment: Alignment.centerLeft,
-                  //     child: Text("5 өрөө",
-                  //         style: CustomStyles.textSmallmSemiBold(context))),
-                  // SizedBox(height: size.height * .01),
-                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
-                  // // SizedBox(height: size.height * .01),
-                  // Align(
-                  //     alignment: Alignment.centerLeft,
-                  //     child: Text("4 өрөө",
-                  //         style: CustomStyles.textSmallmSemiBold(context))),
-                  // SizedBox(height: size.height * .01),
-                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
-                  // // SizedBox(height: size.height * .01),
-                  // Align(
-                  //     alignment: Alignment.centerLeft,
-                  //     child: Text("3 өрөө",
-                  //         style: CustomStyles.textSmallmSemiBold(context))),
-                  // SizedBox(height: size.height * .01),
-                  // // DetailPhoto(photoUrl: widget.getRooms[2].aparts),
-                  // // SizedBox(height: size.height * .01),
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  getRoomsWithQuery[index].name,
+                                  style:
+                                      CustomStyles.textSmallmSemiBold(context),
+                                )),
+                            SizedBox(height: size.height * .01),
+                            QueryRoom(
+                              photoUrl: getRoomsWithQuery[index].aparts,
+                              lang: widget.lang,
+                            ),
+                            SizedBox(height: size.height * .02),
+                          ],
+                        );
+                      }),
+                      itemCount: getRoomsWithQuery.length,
+                    ),
+                  ),
                 ],
               ),
             ),
