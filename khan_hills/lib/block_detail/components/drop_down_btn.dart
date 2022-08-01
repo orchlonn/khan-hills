@@ -5,10 +5,15 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
 class DropDownBtn extends StatefulWidget {
-  DropDownBtn({Key? key, required this.modelData, required this.hintText})
+  DropDownBtn(
+      {Key? key,
+      required this.modelData,
+      required this.hintText,
+      required this.onCountChanged})
       : super(key: key);
   List<ModelData>? modelData;
   String hintText;
+  final Function(int) onCountChanged;
 
   @override
   State<DropDownBtn> createState() => _DropDownBtnState();
@@ -44,15 +49,21 @@ class _DropDownBtnState extends State<DropDownBtn> {
             style: CustomStyles.textMinimSemiBold(context,
                 textColor: primaryColor),
           ),
-          items: widget.modelData!
-              .map((item) => DropdownMenuItem<String>(
-                    value: item.name,
-                    child: Text(
-                      item.name,
-                      style: CustomStyles.textMinimSemiBold(context),
-                    ),
-                  ))
-              .toList(),
+          items: widget.modelData!.map(
+            (item) {
+              return DropdownMenuItem<String>(
+                value: item.name,
+                child: Text(
+                  item.name,
+                  style: CustomStyles.textMinimSemiBold(context),
+                ),
+                onTap: () {
+                  print("item id : ${item.id}");
+                  widget.onCountChanged(item.id);
+                },
+              );
+            },
+          ).toList(),
           value: selectedValue,
           onChanged: (value) {
             setState(() {

@@ -24,9 +24,7 @@ class QueryRoom extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => RoomDetail(
-                            lang: lang,
-                          ))));
+                      builder: ((context) => RoomDetail(lang: lang))));
             },
             child: Container(
               margin: const EdgeInsets.all(10),
