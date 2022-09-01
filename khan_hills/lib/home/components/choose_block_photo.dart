@@ -36,7 +36,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "A")),
                 );
               },
               child: Image.asset(
@@ -54,7 +55,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "B")),
                 );
               },
               child: Image.asset(
@@ -72,7 +74,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "C")),
                 );
               },
               child: Image.asset(
@@ -90,7 +93,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "D")),
                 );
               },
               child: Image.asset(
@@ -108,7 +112,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "E")),
                 );
               },
               child: Image.asset(
@@ -126,7 +131,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "F")),
                 );
               },
               child: Image.asset(
@@ -144,7 +150,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "G")),
                 );
               },
               child: Image.asset(
@@ -162,7 +169,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "H")),
                 );
               },
               child: Image.asset(
@@ -180,7 +188,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "I")),
                 );
               },
               child: Image.asset(
@@ -198,7 +207,8 @@ class ChooseBlockPhoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlockDetail(lang: lang)),
+                      builder: (context) =>
+                          BlockDetail(lang: lang, blockId: "J")),
                 );
               },
               child: Image.asset(

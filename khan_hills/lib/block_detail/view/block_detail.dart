@@ -8,8 +8,9 @@ import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
 
 class BlockDetail extends StatefulWidget {
-  String lang;
-  BlockDetail({Key? key, required this.lang}) : super(key: key);
+  String lang, blockId;
+  BlockDetail({Key? key, required this.lang, required this.blockId})
+      : super(key: key);
 
   @override
   State<BlockDetail> createState() => _BlockDetailState();
@@ -57,7 +58,7 @@ class _BlockDetailState extends State<BlockDetail> {
                 },
               ),
               title: Text(
-                "Block A",
+                "Block ${widget.blockId}",
                 style: CustomStyles.textSmallmSemiBold(context,
                     textColor: whiteColor),
               ),

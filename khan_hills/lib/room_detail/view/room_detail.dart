@@ -92,7 +92,7 @@ class _RoomDetailState extends State<RoomDetail> {
                         top: size.height * .015),
                     child: Column(
                       children: [
-                        //! three choose section
+                        //! three choices section
                         Row(
                           children: [
                             ChooseBlock(

@@ -179,14 +179,7 @@ showDialogFunction(context, currentIndex, pageIndex) {
                     top: size.height * .65,
                   ),
                   child: InkWell(
-                    onTap: () {
-                      // currentIndex > 3
-                      //     ? setState(() {
-                      //         currentIndex += 1;
-                      //         pageIndex += 1;
-                      //       })
-                      //     : currentIndex;
-                    },
+                    onTap: () {},
                     child: Image.asset(
                       "assets/images/icon_right_circle.png",
                       width: size.width * .14,

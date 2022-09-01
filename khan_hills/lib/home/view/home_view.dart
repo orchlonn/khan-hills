@@ -148,207 +148,221 @@ class _HomeState extends State<Home> {
                           )
                         : null,
 
-            body: currentIndex == 0
-                ? SingleChildScrollView(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: size.width * .05, right: size.width * .05),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          //! header
-                          CarouselSliderPage(
-                            carouselController: _carouselController,
-                            data: getBannerLists,
-                          ),
-                          //! buttons
-                          Row(
+            body:
+                //! current index = 1 buyu home
+                currentIndex == 0
+                    ? SingleChildScrollView(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: size.width * .05, right: size.width * .05),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              ChooseBlock(
-                                width: .43,
-                                activeIcon:
-                                    "assets/images/icon_choose_block_selected.png",
-                                nonActiveIcon:
-                                    "assets/images/icon_choose_block_unselected.png",
-                                title: widget.lang == "mn"
-                                    ? "Блок сонгох"
-                                    : "Choose block",
-                                onPressed: (() {
-                                  setState(() {
-                                    activeBtnIndex = 0;
-                                  });
-                                }),
-                                activeBtnIndex: activeBtnIndex,
+                              //! header
+                              CarouselSliderPage(
+                                carouselController: _carouselController,
+                                data: getBannerLists,
                               ),
-                              const Spacer(),
-                              OutsideButton(
-                                width: .43,
-                                title: widget.lang == "mn"
-                                    ? "Гадна орчин"
-                                    : "Outside",
-                                activeImage:
-                                    "assets/images/icon_outside_selected.png",
-                                nonActiveImage:
-                                    "assets/images/icon_outside_unselected.png",
-                                onPressed: (() {
-                                  setState(() {
-                                    activeBtnIndex = 1;
-                                  });
-                                }),
-                                activeBtnIndex: activeBtnIndex,
+                              //! buttons
+                              Row(
+                                children: [
+                                  ChooseBlock(
+                                    width: .43,
+                                    activeIcon:
+                                        "assets/images/icon_choose_block_selected.png",
+                                    nonActiveIcon:
+                                        "assets/images/icon_choose_block_unselected.png",
+                                    title: widget.lang == "mn"
+                                        ? "Блок сонгох"
+                                        : "Choose block",
+                                    onPressed: (() {
+                                      setState(() {
+                                        activeBtnIndex = 0;
+                                      });
+                                    }),
+                                    activeBtnIndex: activeBtnIndex,
+                                  ),
+                                  const Spacer(),
+                                  OutsideButton(
+                                    width: .43,
+                                    title: widget.lang == "mn"
+                                        ? "Гадна орчин"
+                                        : "Outside",
+                                    activeImage:
+                                        "assets/images/icon_outside_selected.png",
+                                    nonActiveImage:
+                                        "assets/images/icon_outside_unselected.png",
+                                    onPressed: (() {
+                                      setState(() {
+                                        activeBtnIndex = 1;
+                                      });
+                                    }),
+                                    activeBtnIndex: activeBtnIndex,
+                                  ),
+                                ],
                               ),
+                              SizedBox(height: size.height * .015),
+                              //! positioned views
+                              activeBtnIndex == 0
+                                  ? ChooseBlockPhoto(lang: widget.lang)
+                                  : const SeeOutsidePhoto(),
+                              SizedBox(height: size.height * .02),
+                              // rooms
+                              Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    getRooms![0].name,
+                                    style: CustomStyles.textSmallmSemiBold(
+                                        context),
+                                  )),
+                              SizedBox(height: size.height * .01),
+                              DetailPhoto(
+                                  lang: widget.lang,
+                                  photoUrl: getRooms[0].aparts),
+                              SizedBox(height: size.height * .01),
+                              Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    getRooms[1].name,
+                                    style: CustomStyles.textSmallmSemiBold(
+                                        context),
+                                  )),
+                              SizedBox(height: size.height * .01),
+                              // details of 4 rooms
+                              DetailPhoto(
+                                  lang: widget.lang,
+                                  photoUrl: getRooms[1].aparts),
+                              SizedBox(height: size.height * .01),
+                              Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    getRooms[2].name,
+                                    style: CustomStyles.textSmallmSemiBold(
+                                        context),
+                                  )),
+                              SizedBox(height: size.height * .01),
+                              // details of 3 rooms
+                              DetailPhoto(
+                                  lang: widget.lang,
+                                  photoUrl: getRooms[2].aparts),
+                              // materials
+                              Row(
+                                children: [
+                                  Text(
+                                    widget.lang == "en"
+                                        ? "Materials"
+                                        : "Материалууд",
+                                    style: CustomStyles.textSmallmSemiBold(
+                                        context),
+                                  ),
+                                  SizedBox(width: size.width * .42),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          currentIndex = 2;
+                                        });
+                                      },
+                                      icon: const Icon(Icons.navigate_next))
+                                ],
+                              ),
+                              //! material detail
+                              DetailMaterial(
+                                  getBrandList:
+                                      getBrandList as List<GetBrandList>),
+                              SizedBox(height: size.height * .01),
+                              // location
+                              Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                      widget.lang == "mn"
+                                          ? "Хотхоны байршил"
+                                          : "Apartment location",
+                                      style: CustomStyles.textMinimSemiBold(
+                                          context))),
+                              SizedBox(height: size.height * .01),
+                              Image.asset("assets/images/img_map.png"),
                             ],
                           ),
-                          SizedBox(height: size.height * .015),
-                          //! positioned views
-                          activeBtnIndex == 0
-                              ? ChooseBlockPhoto(lang: widget.lang)
-                              : const SeeOutsidePhoto(),
-                          SizedBox(height: size.height * .02),
-                          // rooms
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                getRooms![0].name,
-                                style: CustomStyles.textSmallmSemiBold(context),
-                              )),
-                          SizedBox(height: size.height * .01),
-                          DetailPhoto(
-                              lang: widget.lang, photoUrl: getRooms[0].aparts),
-                          SizedBox(height: size.height * .01),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                getRooms[1].name,
-                                style: CustomStyles.textSmallmSemiBold(context),
-                              )),
-                          SizedBox(height: size.height * .01),
-                          // details of 4 rooms
-                          DetailPhoto(
-                              lang: widget.lang, photoUrl: getRooms[1].aparts),
-                          SizedBox(height: size.height * .01),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                getRooms[2].name,
-                                style: CustomStyles.textSmallmSemiBold(context),
-                              )),
-                          SizedBox(height: size.height * .01),
-                          // details of 3 rooms
-                          DetailPhoto(
-                              lang: widget.lang, photoUrl: getRooms[2].aparts),
-                          // materials
-                          Row(
-                            children: [
-                              Text(
-                                widget.lang == "en"
-                                    ? "Materials"
-                                    : "Материалууд",
-                                style: CustomStyles.textSmallmSemiBold(context),
-                              ),
-                              SizedBox(width: size.width * .42),
-                              IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      currentIndex = 2;
-                                    });
-                                  },
-                                  icon: const Icon(Icons.navigate_next))
-                            ],
-                          ),
-                          //! material detail
-                          DetailMaterial(
-                              getBrandList: getBrandList as List<GetBrandList>),
-                          SizedBox(height: size.height * .01),
-                          // location
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                  widget.lang == "mn"
-                                      ? "Хотхоны байршил"
-                                      : "Apartment location",
-                                  style:
-                                      CustomStyles.textMinimSemiBold(context))),
-                          SizedBox(height: size.height * .01),
-                          Image.asset("assets/images/img_map.png"),
-                        ],
-                      ),
-                    ),
-                  )
-                //! current index = 1 buyu about us
-                : currentIndex == 1
-                    ? Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Image.asset(
-                                activeBtnIndex == 0
-                                    ? "assets/images/img_khan_hills_day.png"
-                                    : "assets/images/img_bg_dark.png",
-                                fit: BoxFit.fill,
-                                width: size.width,
-                                height: size.height * .4,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: size.height * .04),
-                                child:
-                                    Image.asset("assets/images/img_logo.png"),
-                              )
-                            ],
-                          ),
-                          //! select option
-                          Container(
-                            margin: EdgeInsets.only(
-                              top: size.height * .018,
-                              left: size.width * .04,
-                              right: size.width * .04,
-                            ),
-                            child: Row(
-                              children: [
-                                ChooseBlock(
-                                  width: .43,
-                                  activeIcon:
-                                      "assets/images/img_orginization_active.png",
-                                  nonActiveIcon:
-                                      "assets/images/img_orginization_nonActive.png",
-                                  title: widget.lang == "mn"
-                                      ? "Байгууллага"
-                                      : "Organization",
-                                  onPressed: (() {
-                                    setState(() {
-                                      activeBtnIndex = 0;
-                                    });
-                                  }),
-                                  activeBtnIndex: activeBtnIndex,
-                                ),
-                                const Spacer(),
-                                OutsideButton(
-                                  width: .43,
-                                  title: widget.lang == "mn"
-                                      ? "Туршлага"
-                                      : "Experience",
-                                  activeImage:
-                                      "assets/images/img_experience_active.png",
-                                  nonActiveImage:
-                                      "assets/images/img_experience_nonActive.png",
-                                  onPressed: (() {
-                                    setState(() {
-                                      activeBtnIndex = 1;
-                                    });
-                                  }),
-                                  activeBtnIndex: activeBtnIndex,
-                                ),
-                              ],
-                            ),
-                          ),
-                          activeBtnIndex == 0 ? Information() : Experience(),
-                        ],
+                        ),
                       )
-                    //! current index = 2 buyu brands
-                    : currentIndex == 2
-                        ? BrandsPage(brandData: getBrandList, lang: widget.lang)
-                        //! current index = 3 buyu contact
-                        : ContactPage(lang: widget.lang),
+                    //! current index = 1 buyu about us
+                    : currentIndex == 1
+                        ? Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    activeBtnIndex == 0
+                                        ? "assets/images/img_khan_hills_day.png"
+                                        : "assets/images/img_bg_dark.png",
+                                    fit: BoxFit.fill,
+                                    width: size.width,
+                                    height: size.height * .4,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.only(top: size.height * .04),
+                                    child: Image.asset(
+                                        "assets/images/img_logo.png"),
+                                  )
+                                ],
+                              ),
+                              //! select option
+                              Container(
+                                margin: EdgeInsets.only(
+                                  top: size.height * .018,
+                                  left: size.width * .04,
+                                  right: size.width * .04,
+                                ),
+                                child: Row(
+                                  children: [
+                                    ChooseBlock(
+                                      width: .43,
+                                      activeIcon:
+                                          "assets/images/img_orginization_active.png",
+                                      nonActiveIcon:
+                                          "assets/images/img_orginization_nonActive.png",
+                                      title: widget.lang == "mn"
+                                          ? "Байгууллага"
+                                          : "Organization",
+                                      onPressed: (() {
+                                        setState(() {
+                                          activeBtnIndex = 0;
+                                        });
+                                      }),
+                                      activeBtnIndex: activeBtnIndex,
+                                    ),
+                                    const Spacer(),
+                                    OutsideButton(
+                                      width: .43,
+                                      title: widget.lang == "mn"
+                                          ? "Туршлага"
+                                          : "Experience",
+                                      activeImage:
+                                          "assets/images/img_experience_active.png",
+                                      nonActiveImage:
+                                          "assets/images/img_experience_nonActive.png",
+                                      onPressed: (() {
+                                        setState(() {
+                                          activeBtnIndex = 1;
+                                        });
+                                      }),
+                                      activeBtnIndex: activeBtnIndex,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              activeBtnIndex == 0
+                                  ? Information()
+                                  : Experience(),
+                            ],
+                          )
+                        //! current index = 2 buyu brands
+                        : currentIndex == 2
+                            ? BrandsPage(
+                                brandData: getBrandList, lang: widget.lang)
+                            //! current index = 3 buyu contact
+                            : ContactPage(lang: widget.lang),
 
             //! bottom navbar
             bottomNavigationBar: Container(
