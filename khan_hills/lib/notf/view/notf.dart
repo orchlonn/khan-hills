@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:khan_hills/home/components/information.dart';
 import 'package:khan_hills/notf/provider/notf_list_provider.dart';
+import 'package:khan_hills/notf/view/medee.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +28,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     Size size = MediaQuery.of(context).size;
     return Consumer<NotfDetail>(builder: ((context, value, child) {
       var notfList = value.getNotifList?.data;
-      // print("gsadgasd $notfList");
+      // log(notfList![0].body);
       return Stack(
         children: [
           Container(
@@ -59,6 +63,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 child: ListView.builder(
                   itemBuilder: ((context, index) {
                     return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MedeeScreen(
+                                    htmlCode: notfList![index].body)));
+                      },
                       child: Container(
                         margin: EdgeInsets.symmetric(
                             vertical: size.height * .01,
