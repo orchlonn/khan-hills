@@ -21,10 +21,8 @@ class MedeeScreen extends StatefulWidget {
 
 class _MedeeScreenState extends State<MedeeScreen> {
   late WebViewController controller;
-  late ScrollController scrollController;
   @override
   void initState() {
-    scrollController = ScrollController();
     super.initState();
   }
 
@@ -40,7 +38,6 @@ class _MedeeScreenState extends State<MedeeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    log(scrollController.toString());
     return Stack(
       children: [
         Container(
@@ -82,7 +79,7 @@ class _MedeeScreenState extends State<MedeeScreen> {
                 bottom: 0,
                 child: Container(
                   width: size.width,
-                  height: size.height * 0.65,
+                  height: size.height * 0.7,
                   decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
