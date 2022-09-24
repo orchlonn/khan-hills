@@ -4,7 +4,11 @@ import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:panorama/panorama.dart';
 
 class PanoramaPhoto extends StatelessWidget {
-  const PanoramaPhoto({Key? key}) : super(key: key);
+  String longPhoto;
+  PanoramaPhoto({
+    Key? key,
+    required this.longPhoto,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +17,7 @@ class PanoramaPhoto extends StatelessWidget {
     return Stack(
       children: [
         Panorama(
-          child: Image.network(
-              "https://images.pexels.com/photos/207385/pexels-photo-207385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
+          child: Image.network(longPhoto),
         ),
         Container(
           margin:
@@ -29,7 +32,7 @@ class PanoramaPhoto extends StatelessWidget {
             margin: EdgeInsets.only(
                 top: size.height * .064, left: size.width * .05),
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 size: 25,
                 color: whiteColor,

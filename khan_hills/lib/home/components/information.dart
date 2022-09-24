@@ -1,29 +1,49 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:khan_hills/models/get_information.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 
-class Information extends StatelessWidget {
-  const Information({
+class Information extends StatefulWidget {
+  String htmlData;
+  Information({
     Key? key,
+    required this.htmlData,
   }) : super(key: key);
+
+  @override
+  State<Information> createState() => _InformationState();
+
+  static InformationModel? fromJson(data) {}
+}
+
+class _InformationState extends State<Information> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      height: size.height * 0.43,
       margin: EdgeInsets.symmetric(horizontal: size.width * .04),
-      child: Column(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Компанийн танилцуулга",
-              style: CustomStyles.textMediumSemiBold(context),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: size.height * .02),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Компанийн танилцуулга",
+                style: CustomStyles.textMediumSemiBold(context),
+              ),
             ),
-          ),
-          SizedBox(height: size.height * .02),
-          Text(
-              "Mogul ibiz ХХК нь иргэний ба үйлдвэрийн барилга, дэд бүтцийн барилга байгууламж барих үйл ажиллагаа явуулах үндсэн зорилготойгоор 2010 онд үүсгэн байгуулагдсан. Манай компани нь байгуулагдсан цагаасаа хойш өөрсдийн хэрэгжүүлж буй орон сууцны төслүүдийнхээ барилга угсралтын ажлыг хийхийн зэрэгцээ, аж ахуй нэгж, иргэний захиалгын дагуу төрөл бүрийн иргэний ба үйлдвэрийн барилга байгуулмжийг барьж амжилттай ашиглалтанд хүлээлгэн өгсөн. Мөн барилга угсралт, зам гүүрийн байгууламж барих, засварлах зэрэг тусгай зөвшөөрлүүдийнхээ хүрээнд хөдөлмөр хамгаалал, чанарын баталгааг эрхэмлэн ажилласаар ирсэн."),
-        ],
+            SizedBox(height: size.height * .02),
+            Html(data: widget.htmlData),
+          ],
+        ),
       ),
     );
   }

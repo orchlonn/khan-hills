@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:khan_hills/notf/view/notf.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
@@ -10,9 +11,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class MedeeScreen extends StatefulWidget {
   String htmlCode;
+  String lang;
   MedeeScreen({
     Key? key,
     required this.htmlCode,
+    required this.lang,
   }) : super(key: key);
 
   @override
@@ -20,19 +23,9 @@ class MedeeScreen extends StatefulWidget {
 }
 
 class _MedeeScreenState extends State<MedeeScreen> {
-  late WebViewController controller;
   @override
   void initState() {
     super.initState();
-  }
-
-  void loadLocalHtml(html) async {
-    final url = Uri.dataFromString(
-      '''$html''',
-      mimeType: 'text/html',
-      encoding: Encoding.getByName('utf-8'),
-    ).toString();
-    controller.loadUrl(url);
   }
 
   @override
@@ -43,7 +36,6 @@ class _MedeeScreenState extends State<MedeeScreen> {
         Container(
           width: size.width,
           height: size.height,
-          // color: const Color(0xFFe2d8e1),
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -68,7 +60,7 @@ class _MedeeScreenState extends State<MedeeScreen> {
             ),
             elevation: 0,
             title: Text(
-              "Мэдээ",
+              widget.lang == "mn" ? "Мэдээ" : "News",
               style: CustomStyles.textSmallmSemiBold(context,
                   textColor: whiteColor),
             ),
@@ -81,20 +73,21 @@ class _MedeeScreenState extends State<MedeeScreen> {
                   width: size.width,
                   height: size.height * 0.7,
                   decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      )),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 20),
-                    child: WebView(
-                      javascriptMode: JavascriptMode.unrestricted,
-                      onWebViewCreated: (controller) {
-                        this.controller = controller;
-                        loadLocalHtml(widget.htmlCode);
-                      },
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 20,
+                      ),
+                      child: Html(
+                        data: widget.htmlCode,
+                      ),
                     ),
                   ),
                 ),

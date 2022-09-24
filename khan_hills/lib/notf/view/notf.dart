@@ -68,6 +68,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MedeeScreen(
+                                    lang: widget.lang,
                                     htmlCode: notfList![index].body)));
                       },
                       child: Container(

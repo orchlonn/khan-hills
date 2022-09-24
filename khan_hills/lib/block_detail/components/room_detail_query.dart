@@ -32,7 +32,6 @@ class _RoomDetailQueryState extends State<RoomDetailQuery> {
 
   @override
   Widget build(BuildContext context) {
-    print("modelId : : ${widget.modelId}");
     Size size = MediaQuery.of(context).size;
     return Consumer<BlockDetailProvider>(builder: ((context, value, child) {
       var getRoomsWithQuery = value.getRoomsWithQuery!.data;
@@ -51,6 +50,7 @@ class _RoomDetailQueryState extends State<RoomDetailQuery> {
                 QueryRoom(
                   photoUrl: getRoomsWithQuery[index].aparts,
                   lang: widget.lang,
+                  aparts: getRoomsWithQuery,
                 ),
                 SizedBox(height: size.height * .02),
               ],

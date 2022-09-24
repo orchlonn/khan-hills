@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,6 +21,8 @@ import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
 
+import '../../block_detail/provider/block_detail_provider.dart';
+
 class Home extends StatefulWidget {
   String lang;
   Home({Key? key, required this.lang}) : super(key: key);
@@ -31,13 +35,15 @@ class _HomeState extends State<Home> {
   final CarouselController _carouselController = CarouselController();
   int currentIndex = 0;
   int activeBtnIndex = 0;
-
+  @override
   void initState() {
     super.initState();
     final data = Provider.of<MainProvider>(context, listen: false);
     data.fetchBannerList(context, widget.lang);
     data.fetchBrandList(context, widget.lang);
     data.fetchRooms(context, widget.lang);
+    data.getInformation(context, widget.lang);
+    data.fetchBannerList(context, widget.lang);
   }
 
   @override
@@ -162,6 +168,7 @@ class _HomeState extends State<Home> {
                               CarouselSliderPage(
                                 carouselController: _carouselController,
                                 data: getBannerLists,
+                                lang: widget.lang,
                               ),
                               //! buttons
                               Row(
@@ -217,8 +224,9 @@ class _HomeState extends State<Home> {
                                   )),
                               SizedBox(height: size.height * .01),
                               DetailPhoto(
-                                  lang: widget.lang,
-                                  photoUrl: getRooms[0].aparts),
+                                lang: widget.lang,
+                                photoUrl: getRooms[0].aparts,
+                              ),
                               SizedBox(height: size.height * .01),
                               Align(
                                   alignment: Alignment.centerLeft,
@@ -230,8 +238,10 @@ class _HomeState extends State<Home> {
                               SizedBox(height: size.height * .01),
                               // details of 4 rooms
                               DetailPhoto(
-                                  lang: widget.lang,
-                                  photoUrl: getRooms[1].aparts),
+                                lang: widget.lang,
+                                photoUrl: getRooms[1].aparts,
+                              ),
+
                               SizedBox(height: size.height * .01),
                               Align(
                                   alignment: Alignment.centerLeft,
@@ -243,8 +253,9 @@ class _HomeState extends State<Home> {
                               SizedBox(height: size.height * .01),
                               // details of 3 rooms
                               DetailPhoto(
-                                  lang: widget.lang,
-                                  photoUrl: getRooms[2].aparts),
+                                lang: widget.lang,
+                                photoUrl: getRooms[2].aparts,
+                              ),
                               // materials
                               Row(
                                 children: [
@@ -353,8 +364,9 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               activeBtnIndex == 0
-                                  ? Information()
-                                  : Experience(),
+                                  ? Information(
+                                      htmlData: value.getInfo!.data[0].body)
+                                  : Experience(lang: widget.lang),
                             ],
                           )
                         //! current index = 2 buyu brands
