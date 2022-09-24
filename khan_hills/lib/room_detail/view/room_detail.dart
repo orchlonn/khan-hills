@@ -63,8 +63,8 @@ class _RoomDetailState extends State<RoomDetail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<MainProvider>(builder: (context, value, child) {
-      // print(value.getApartDetail!.data[0].video);
       log("Apart ID:   #${widget.apartId}");
+      log(value.getApartDetail!.data[0].id.toString());
       return YoutubePlayerBuilder(
         player: YoutubePlayer(
           controller: controller,

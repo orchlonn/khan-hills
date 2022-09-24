@@ -43,7 +43,7 @@ class _DetailPhotoState extends State<DetailPhoto> {
                   MaterialPageRoute(
                       builder: ((context) => RoomDetail(
                             lang: widget.lang,
-                            urlPhoto: widget.photoUrl[0].thumbImg,
+                            urlPhoto: widget.photoUrl[index].thumbImg,
                             apartId: widget.photoUrl[index].id,
                             ytVideo:
                                 "https://www.youtube.com/watch?v=6SZuFi9htLA",

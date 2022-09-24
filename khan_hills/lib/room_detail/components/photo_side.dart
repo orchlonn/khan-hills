@@ -30,7 +30,7 @@ class _PhotoSideState extends State<PhotoSide> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    log(widget.rooms.data[0].room.length.toString());
+    // log(widget.rooms.data[0].room.length.toString());
     return SizedBox(
       height: size.height * 0.75,
       child: SingleChildScrollView(
