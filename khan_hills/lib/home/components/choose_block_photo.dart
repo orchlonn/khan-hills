@@ -37,7 +37,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "A")),
+                          BlockDetail(lang: lang, blockId: 1)),
                 );
               },
               child: Image.asset(
@@ -56,7 +56,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "B")),
+                          BlockDetail(lang: lang, blockId: 2)),
                 );
               },
               child: Image.asset(
@@ -75,7 +75,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "C")),
+                          BlockDetail(lang: lang, blockId: 3)),
                 );
               },
               child: Image.asset(
@@ -94,7 +94,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "D")),
+                          BlockDetail(lang: lang, blockId: 4)),
                 );
               },
               child: Image.asset(
@@ -113,7 +113,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "E")),
+                          BlockDetail(lang: lang, blockId: 5)),
                 );
               },
               child: Image.asset(
@@ -132,7 +132,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "F")),
+                          BlockDetail(lang: lang, blockId: 6)),
                 );
               },
               child: Image.asset(
@@ -151,7 +151,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "G")),
+                          BlockDetail(lang: lang, blockId: 7)),
                 );
               },
               child: Image.asset(
@@ -170,7 +170,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "H")),
+                          BlockDetail(lang: lang, blockId: 8)),
                 );
               },
               child: Image.asset(
@@ -189,7 +189,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "I")),
+                          BlockDetail(lang: lang, blockId: 9)),
                 );
               },
               child: Image.asset(
@@ -208,7 +208,7 @@ class ChooseBlockPhoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          BlockDetail(lang: lang, blockId: "J")),
+                          BlockDetail(lang: lang, blockId: 10)),
                 );
               },
               child: Image.asset(

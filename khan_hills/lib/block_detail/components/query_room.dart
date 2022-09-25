@@ -11,13 +11,13 @@ import '../../providers/main_provider.dart';
 
 class QueryRoom extends StatefulWidget {
   String lang;
-  List<RoomQueryData> aparts;
+  // List<RoomQueryData> aparts;
   final List<Apart> photoUrl;
   QueryRoom({
     Key? key,
     required this.lang,
     required this.photoUrl,
-    required this.aparts,
+    // required this.aparts,
   }) : super(key: key);
 
   @override

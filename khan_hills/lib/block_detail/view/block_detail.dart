@@ -8,23 +8,32 @@ import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
 
 class BlockDetail extends StatefulWidget {
-  String lang, blockId;
-  BlockDetail({Key? key, required this.lang, required this.blockId})
-      : super(key: key);
+  String lang;
+  int blockId;
+  BlockDetail({
+    Key? key,
+    required this.lang,
+    required this.blockId,
+  }) : super(key: key);
 
   @override
   State<BlockDetail> createState() => _BlockDetailState();
 }
 
 class _BlockDetailState extends State<BlockDetail> {
-  int modelId = 0;
+  int model = 0;
+  int floor = 0;
+  int apartSize = 0;
+
   @override
   void initState() {
-    super.initState();
     final data = Provider.of<BlockDetailProvider>(context, listen: false);
     data.fetchModelList(context, widget.lang);
     data.fetchFloorList(context, widget.lang);
     data.fetchRoomSize(context, widget.lang);
+    data.fetchRoomWIthQuery(
+        context, widget.lang, model, floor, apartSize, widget.blockId);
+    super.initState();
   }
 
   @override
@@ -39,6 +48,7 @@ class _BlockDetailState extends State<BlockDetail> {
       var getModel = value.getModelList?.data;
       var getFloor = value.getFloorList?.data;
       var getRoomSize = value.getRoomSize?.data;
+      var getRoomsWithQuery = value.getRoomsWithQuery!.data;
       return Stack(
         children: [
           Container(
@@ -93,7 +103,10 @@ class _BlockDetailState extends State<BlockDetail> {
                         onCountChanged: (ind) {
                           setState(() {
                             print("index1 : $ind");
-                            modelId = ind;
+                            model = ind;
+                          });
+                          Future.delayed(const Duration(milliseconds: 500), () {
+                            initState();
                           });
                         },
                       ),
@@ -103,6 +116,10 @@ class _BlockDetailState extends State<BlockDetail> {
                         onCountChanged: (ind) {
                           setState(() {
                             print("index2 : $ind");
+                            floor = ind;
+                          });
+                          Future.delayed(const Duration(milliseconds: 500), () {
+                            initState();
                           });
                         },
                       ),
@@ -112,40 +129,44 @@ class _BlockDetailState extends State<BlockDetail> {
                         onCountChanged: (ind) {
                           setState(() {
                             print("index3 : $ind");
+                            apartSize = ind;
+                          });
+                          Future.delayed(const Duration(milliseconds: 500), () {
+                            initState();
                           });
                         },
                       ),
                     ],
                   ),
                   SizedBox(height: size.height * .02),
-                  RoomDetailQuery(
-                    modelId: modelId,
-                    lang: widget.lang,
-                  ),
-                  // Expanded(
-                  //   child: ListView.builder(
-                  //     itemBuilder: ((context, index) {
-                  //       return Column(
-                  //         children: [
-                  //           Align(
-                  //               alignment: Alignment.centerLeft,
-                  //               child: Text(
-                  //                 getRoomsWithQuery[index].name,
-                  //                 style:
-                  //                     CustomStyles.textSmallmSemiBold(context),
-                  //               )),
-                  //           SizedBox(height: size.height * .01),
-                  //           QueryRoom(
-                  //             photoUrl: getRoomsWithQuery[index].aparts,
-                  //             lang: widget.lang,
-                  //           ),
-                  //           SizedBox(height: size.height * .02),
-                  //         ],
-                  //       );
-                  //     }),
-                  //     itemCount: getRoomsWithQuery.length,
-                  //   ),
+                  // RoomDetailQuery(
+                  //   modelId: modelId,
+                  //   lang: widget.lang,
                   // ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  getRoomsWithQuery[index].name,
+                                  style:
+                                      CustomStyles.textSmallmSemiBold(context),
+                                )),
+                            SizedBox(height: size.height * .01),
+                            QueryRoom(
+                              photoUrl: getRoomsWithQuery[index].aparts,
+                              lang: widget.lang,
+                            ),
+                            SizedBox(height: size.height * .02),
+                          ],
+                        );
+                      }),
+                      itemCount: getRoomsWithQuery.length,
+                    ),
+                  ),
                 ],
               ),
             ),

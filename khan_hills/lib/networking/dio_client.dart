@@ -218,15 +218,22 @@ class DioClient {
     return notificationList;
   }
 
-  Future<RoomsWithQuery?> getRoomsWithQuery(String lang, int modelId) async {
-    print("model id : :: :: : :: :: :: + + ++ + ++ $modelId");
+  Future<RoomsWithQuery?> getRoomsWithQuery(
+      String lang, int model, int floor, int size, int blockId) async {
+    print("model id : :: :: : :: :: :: + + ++ + ++ $model");
+    print("floor id : :: :: : :: :: :: + + ++ + ++ $floor");
+    print("size id : :: :: : :: :: :: + + ++ + ++ $size");
+    print("block id : :: :: : :: :: :: + + ++ + ++ $blockId");
     RoomsWithQuery? roomsWithQuery;
     try {
       Response responseData = await _dio.get(
-        "${lang}/rooms-aparts",
+        "$lang/rooms-aparts",
         queryParameters: {
           "type": "app",
-          "model": modelId > 0 ? modelId : null,
+          "model": model > 0 ? model : null,
+          "floor": floor > 0 ? floor : null,
+          "size": size > 0 ? size : null,
+          "block": blockId > 0 ? blockId : null,
         },
       );
       roomsWithQuery = RoomsWithQuery.fromJson(responseData.data);

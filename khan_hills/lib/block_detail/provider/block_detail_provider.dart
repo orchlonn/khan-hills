@@ -23,8 +23,10 @@ class BlockDetailProvider extends ChangeNotifier {
   }
 
   RoomsWithQuery? getRoomsWithQuery;
-  Future<void> fetchRoomWIthQuery(context, String lang, int modelId) async {
-    getRoomsWithQuery = await DioClient().getRoomsWithQuery(lang, modelId);
+  Future<void> fetchRoomWIthQuery(
+      context, String lang, int model, int floor, int size, int blockId) async {
+    getRoomsWithQuery =
+        await DioClient().getRoomsWithQuery(lang, model, floor, size, blockId);
     notifyListeners();
   }
 }
