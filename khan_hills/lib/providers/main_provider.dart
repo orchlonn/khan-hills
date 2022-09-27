@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:khan_hills/block_detail/model/apart_detail_model.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
@@ -9,8 +11,16 @@ import 'package:khan_hills/networking/dio_client.dart';
 
 class MainProvider extends ChangeNotifier {
   GetBannerList? getBannerList;
+  bool isLoading = false;
   Future<void> fetchBannerList(context, String lang) async {
-    getBannerList = await DioClient().getBannerLists(lang);
+    isLoading = true;
+    try {
+      getBannerList = await DioClient().getBannerLists(lang);
+    } catch (e, stackTrace) {
+      log("errr: $e", stackTrace: stackTrace);
+    } finally {
+      isLoading = false;
+    }
     notifyListeners();
   }
 

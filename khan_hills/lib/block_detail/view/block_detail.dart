@@ -48,7 +48,8 @@ class _BlockDetailState extends State<BlockDetail> {
       var getModel = value.getModelList?.data;
       var getFloor = value.getFloorList?.data;
       var getRoomSize = value.getRoomSize?.data;
-      var getRoomsWithQuery = value.getRoomsWithQuery!.data;
+      var getRoomsWithQuery = value.getRoomsWithQuery?.data;
+
       return Stack(
         children: [
           Container(
@@ -139,34 +140,35 @@ class _BlockDetailState extends State<BlockDetail> {
                     ],
                   ),
                   SizedBox(height: size.height * .02),
-                  // RoomDetailQuery(
-                  //   modelId: modelId,
-                  //   lang: widget.lang,
-                  // ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: ((context, index) {
-                        return Column(
-                          children: [
-                            Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  getRoomsWithQuery[index].name,
-                                  style:
-                                      CustomStyles.textSmallmSemiBold(context),
-                                )),
-                            SizedBox(height: size.height * .01),
-                            QueryRoom(
-                              photoUrl: getRoomsWithQuery[index].aparts,
-                              lang: widget.lang,
-                            ),
-                            SizedBox(height: size.height * .02),
-                          ],
-                        );
-                      }),
-                      itemCount: getRoomsWithQuery.length,
-                    ),
-                  ),
+                  getRoomsWithQuery == null
+                      ? const Expanded(
+                          child: Center(
+                          child: Text("Өгөгдөл олдсонгүй."),
+                        ))
+                      : Expanded(
+                          child: ListView.builder(
+                            itemBuilder: ((context, index) {
+                              return Column(
+                                children: [
+                                  Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        getRoomsWithQuery[index].name,
+                                        style: CustomStyles.textSmallmSemiBold(
+                                            context),
+                                      )),
+                                  SizedBox(height: size.height * .01),
+                                  QueryRoom(
+                                    photoUrl: getRoomsWithQuery[index].aparts,
+                                    lang: widget.lang,
+                                  ),
+                                  SizedBox(height: size.height * .02),
+                                ],
+                              );
+                            }),
+                            itemCount: getRoomsWithQuery.length,
+                          ),
+                        ),
                 ],
               ),
             ),

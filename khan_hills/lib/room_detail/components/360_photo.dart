@@ -17,12 +17,13 @@ class PanoramaPhoto extends StatelessWidget {
     return Stack(
       children: [
         Panorama(
+          sensitivity: 3.0,
           child: Image.network(longPhoto),
         ),
         Container(
           margin:
               EdgeInsets.only(top: size.height * .08, left: size.width * .35),
-          child: Text("Гадна орчин 360",
+          child: Text("360 харагдац",
               style: CustomStyles.textSmallmSemiBold(context,
                   textColor: whiteColor)),
         ),

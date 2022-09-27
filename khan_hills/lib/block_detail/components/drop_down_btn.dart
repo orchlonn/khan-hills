@@ -44,10 +44,13 @@ class _DropDownBtnState extends State<DropDownBtn> {
           buttonPadding: EdgeInsets.symmetric(horizontal: size.width * .02),
           icon: Icon(Icons.keyboard_arrow_down,
               size: 15, color: isActive ? whiteColor : primaryColor),
-          hint: Text(
-            widget.hintText,
-            style: CustomStyles.textMinimSemiBold(context,
-                textColor: primaryColor),
+          hint: Container(
+            margin: const EdgeInsets.only(left: 18),
+            child: Text(
+              widget.hintText,
+              style: CustomStyles.textMinimSemiBold(context,
+                  textColor: primaryColor),
+            ),
           ),
           items: widget.modelData!.map(
             (item) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatelessWidget {
   String lang;
@@ -47,6 +48,10 @@ class ContactPage extends StatelessWidget {
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
           PrimaryButton(
+            tapCallback: () {
+              print("Phone");
+              launchUrl(Uri.parse("tel:91118859"));
+            },
             imageUrl: "assets/images/img_phone_white.png",
             btnText: "91118859",
           ),
@@ -58,6 +63,10 @@ class ContactPage extends StatelessWidget {
                   style: CustomStyles.textMinimSemiBold(context))),
           SizedBox(height: size.height * .02),
           PrimaryButton(
+            tapCallback: () {
+              print("pdf");
+              launchUrl(Uri.parse("https://khan.bsky.mn/introduction.pdf"));
+            },
             imageUrl: "assets/images/img_download.png",
             btnText: lang == "mn" ? "PDF татах" : "Download PDF",
           ),
@@ -70,13 +79,21 @@ class ContactPage extends StatelessWidget {
 class PrimaryButton extends StatelessWidget {
   final String btnText;
   final String imageUrl;
-  const PrimaryButton({Key? key, required this.btnText, required this.imageUrl})
+  final VoidCallback tapCallback;
+  PrimaryButton(
+      {Key? key,
+      required this.btnText,
+      required this.imageUrl,
+      required this.tapCallback})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
+      onTap: () {
+        tapCallback();
+      },
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [

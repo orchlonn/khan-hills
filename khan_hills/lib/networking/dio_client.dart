@@ -246,6 +246,7 @@ class DioClient {
       } else {
         print('Error sending request!');
         print(e.message);
+        return null;
       }
     }
     return roomsWithQuery;

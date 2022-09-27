@@ -20,6 +20,7 @@ import 'package:khan_hills/providers/main_provider.dart';
 import 'package:khan_hills/utils/colors.dart';
 import 'package:khan_hills/utils/custom_styles.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../block_detail/provider/block_detail_provider.dart';
 
@@ -50,9 +51,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<MainProvider>(builder: (((context, value, child) {
+      if (value.isLoading == true) {
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
+      }
       var getBannerLists = value.getBannerList?.data;
       var getBrandList = value.getBrandList?.data;
       var getRooms = value.getRooms?.data;
+
       return Stack(
         children: [
           Container(
@@ -146,9 +153,14 @@ class _HomeState extends State<Home> {
                               Container(
                                   margin:
                                       EdgeInsets.only(right: size.width * .05),
-                                  child: Image.asset(
-                                    "assets/images/img_phone.png",
-                                    width: size.width * .07,
+                                  child: InkWell(
+                                    onTap: () {
+                                      launchUrl(Uri.parse("tel:91118859"));
+                                    },
+                                    child: Image.asset(
+                                      "assets/images/img_phone.png",
+                                      width: size.width * .07,
+                                    ),
                                   )),
                             ],
                           )

@@ -123,9 +123,8 @@ class _CarouselSliderPageState extends State<CarouselSliderPage> {
                           width: size.width * .08,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: i - 1 == index
-                                ? primaryColor
-                                : unselectedGreyColor,
+                            color:
+                                i == index ? primaryColor : unselectedGreyColor,
                           ),
                         );
                       }),
