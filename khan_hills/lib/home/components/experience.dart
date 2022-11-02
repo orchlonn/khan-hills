@@ -30,6 +30,11 @@ class _ExperienceState extends State<Experience> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<MainProvider>(builder: (context, value, child) {
+      if (value.isLoading == true) {
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
+      }
       var historyData = value.getHistory!.data;
       return Container(
         margin: EdgeInsets.symmetric(horizontal: size.width * .04),

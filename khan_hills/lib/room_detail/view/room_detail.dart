@@ -17,13 +17,12 @@ class RoomDetail extends StatefulWidget {
   String lang;
   String urlPhoto;
   int apartId;
-  String ytVideo;
+
   RoomDetail({
     Key? key,
     required this.lang,
     required this.urlPhoto,
     required this.apartId,
-    required this.ytVideo,
   }) : super(key: key);
 
   @override
@@ -38,10 +37,6 @@ class _RoomDetailState extends State<RoomDetail> {
   @override
   void initState() {
     super.initState();
-
-    var url = widget.ytVideo;
-    controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(url.toString())!);
 
     final data = Provider.of<MainProvider>(context, listen: false);
     data.fetchApartDetail(context, widget.lang, widget.apartId);
@@ -63,8 +58,14 @@ class _RoomDetailState extends State<RoomDetail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<MainProvider>(builder: (context, value, child) {
-      log("Apart ID:   #${widget.apartId}");
-      log(value.getApartDetail!.data[0].id.toString());
+      if (value.isLoading == true) {
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
+      }
+      String url = value.getApartDetail!.data[0].video;
+      controller = YoutubePlayerController(
+          initialVideoId: YoutubePlayer.convertUrlToId(url)!);
       return YoutubePlayerBuilder(
         player: YoutubePlayer(
           controller: controller,

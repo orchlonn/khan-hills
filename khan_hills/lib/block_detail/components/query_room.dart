@@ -42,10 +42,6 @@ class _QueryRoomState extends State<QueryRoom> {
         itemBuilder: ((context, index) {
           return InkWell(
             onTap: () {
-              final data = Provider.of<MainProvider>(context, listen: false);
-              data.fetchApartDetail(
-                  context, widget.lang, widget.photoUrl[index].id);
-              log(data.getApartDetail!.data[0].video);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -53,7 +49,6 @@ class _QueryRoomState extends State<QueryRoom> {
                         lang: widget.lang,
                         urlPhoto: widget.photoUrl[index].thumbImg,
                         apartId: widget.photoUrl[index].id,
-                        ytVideo: data.getApartDetail!.data[0].video,
                       )),
                 ),
               );

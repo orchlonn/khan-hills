@@ -4,6 +4,7 @@ import 'package:khan_hills/block_detail/model/aparts_with_query.dart';
 import 'package:khan_hills/block_detail/model/get_model_list.dart';
 import 'package:khan_hills/home/components/information.dart';
 import 'package:khan_hills/models/get_banner_list.dart';
+import 'package:khan_hills/models/get_brand_details.dart';
 import 'package:khan_hills/models/get_brands.dart';
 import 'package:khan_hills/models/get_history.dart';
 import 'package:khan_hills/models/get_information.dart';
@@ -216,6 +217,30 @@ class DioClient {
       }
     }
     return notificationList;
+  }
+
+  Future<BrandDetails?> getBrandDetails(String lang, id) async {
+    BrandDetails? brandDetails;
+    try {
+      Response response = await _dio.get(
+        "${lang}/brand/detail",
+        queryParameters: {
+          "brandId": id,
+        },
+      );
+      brandDetails = BrandDetails.fromJson(response.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+    return brandDetails;
   }
 
   Future<RoomsWithQuery?> getRoomsWithQuery(

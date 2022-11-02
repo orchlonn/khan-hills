@@ -45,6 +45,11 @@ class _BlockDetailState extends State<BlockDetail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<BlockDetailProvider>(builder: ((context, value, child) {
+      if (value.isLoading == true) {
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
+      }
       var getModel = value.getModelList?.data;
       var getFloor = value.getFloorList?.data;
       var getRoomSize = value.getRoomSize?.data;

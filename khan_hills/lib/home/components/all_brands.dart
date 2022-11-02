@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:khan_hills/home/components/brand_detail.dart';
@@ -13,6 +15,7 @@ class BrandsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: size.width * .04),
@@ -38,6 +41,7 @@ class BrandsPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => BrandDetail(
+                                      id: brandData![index].id.toString(),
                                       lang: lang,
                                     )));
                       },

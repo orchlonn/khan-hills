@@ -290,8 +290,11 @@ class _HomeState extends State<Home> {
                               ),
                               //! material detail
                               DetailMaterial(
-                                  getBrandList:
-                                      getBrandList as List<GetBrandList>),
+                                brandData: getBrandList,
+                                lang: widget.lang,
+                                getBrandList:
+                                    getBrandList as List<GetBrandList>,
+                              ),
                               SizedBox(height: size.height * .01),
                               // location
                               Align(

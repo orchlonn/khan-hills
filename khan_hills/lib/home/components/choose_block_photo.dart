@@ -30,7 +30,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // a vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .12, top: size.height * .032),
+                left: size.width * .78, top: size.height * .305),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -49,7 +49,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // b vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .418, top: size.height * .032),
+                left: size.width * .535, top: size.height * .305),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -68,7 +68,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // c vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .72, top: size.height * .032),
+                left: size.width * .295, top: size.height * .305),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -87,7 +87,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // d vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .168, top: size.height * .185),
+                left: size.width * .05, top: size.height * .305),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -106,7 +106,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // e vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .415, top: size.height * .185),
+                left: size.width * .66, top: size.height * .185),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -125,7 +125,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // f vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .66, top: size.height * .185),
+                left: size.width * .415, top: size.height * .185),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -144,7 +144,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // g vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .05, top: size.height * .305),
+                left: size.width * .168, top: size.height * .185),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -163,7 +163,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // h vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .295, top: size.height * .305),
+                left: size.width * .72, top: size.height * .032),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -182,7 +182,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // i vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .535, top: size.height * .305),
+                left: size.width * .418, top: size.height * .032),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -201,7 +201,7 @@ class ChooseBlockPhoto extends StatelessWidget {
           // j vseg
           Container(
             margin: EdgeInsets.only(
-                left: size.width * .78, top: size.height * .305),
+                left: size.width * .12, top: size.height * .032),
             child: InkWell(
               onTap: () {
                 Navigator.push(

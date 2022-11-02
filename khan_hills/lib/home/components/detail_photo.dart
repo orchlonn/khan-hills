@@ -45,8 +45,6 @@ class _DetailPhotoState extends State<DetailPhoto> {
                             lang: widget.lang,
                             urlPhoto: widget.photoUrl[index].thumbImg,
                             apartId: widget.photoUrl[index].id,
-                            ytVideo:
-                                "https://www.youtube.com/watch?v=6SZuFi9htLA",
                           ))));
             },
             child: Container(
