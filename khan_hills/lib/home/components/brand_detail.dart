@@ -203,7 +203,66 @@ class _BrandDetailState extends State<BrandDetail> {
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: SingleChildScrollView(
-                        child: Html(data: brandDetailData[0].body),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: size.height * 0.09,
+                                      height: size.height * 0.09,
+                                      child: Image.asset(
+                                        "assets/images/door_icon.png",
+                                      ),
+                                    ),
+                                    Text(
+                                      brandDetailData[0].desc1,
+                                      style:
+                                          const TextStyle(color: primaryColor),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: size.height * 0.09,
+                                      height: size.height * 0.09,
+                                      child: Image.asset(
+                                        "assets/images/wood_icon.png",
+                                      ),
+                                    ),
+                                    Text(
+                                      brandDetailData[0].desc2,
+                                      style:
+                                          const TextStyle(color: primaryColor),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: size.height * 0.09,
+                                      height: size.height * 0.09,
+                                      child: Image.asset(
+                                        "assets/images/color_icon.png",
+                                      ),
+                                    ),
+                                    Text(
+                                      brandDetailData[0].desc3,
+                                      style:
+                                          const TextStyle(color: primaryColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 5),
+                            Html(data: brandDetailData[0].body),
+                          ],
+                        ),
                       ),
                     ),
                   ),
