@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -19,12 +21,7 @@ class BrandDetail extends StatefulWidget {
 }
 
 class _BrandDetailState extends State<BrandDetail> {
-  List<String> imageUrl = [
-    "https://www.kangton.com/uploads/main-img.jpg",
-    "https://www.kangton.com/uploads/191.jpg",
-    "https://www.kangton.com/uploads/2-KT51.jpg",
-    "https://www.kangton.com/uploads/KD01A-oak-shaker.jpg",
-  ];
+  List<String> imageUrl = ["", "", "", ""];
 
   String doorImageUrl = '';
   void changeDoorImage(url) {
@@ -38,7 +35,8 @@ class _BrandDetailState extends State<BrandDetail> {
     super.initState();
     final data = Provider.of<MainProvider>(context, listen: false);
     data.fetchBrandDetails(context, widget.lang, widget.id);
-    doorImageUrl = "https://www.kangton.com/uploads/main-img.jpg";
+    doorImageUrl =
+        "https://khan.bsky.mn/uploads/images/user_image/636b00fb2bbf9809973356.png";
   }
 
   @override
@@ -51,6 +49,10 @@ class _BrandDetailState extends State<BrandDetail> {
         );
       }
       final brandDetailData = value.getBrandDetails!.data;
+      imageUrl[0] = brandDetailData[0].img1;
+      imageUrl[1] = brandDetailData[0].img2;
+      imageUrl[2] = brandDetailData[0].img3;
+      imageUrl[3] = brandDetailData[0].img4;
       return Stack(
         children: [
           Container(
