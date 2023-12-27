@@ -57,6 +57,7 @@ class _RoomDetailState extends State<RoomDetail> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    print("APART ID:::: ${widget.apartId}");
     return Consumer<MainProvider>(builder: (context, value, child) {
       if (value.isLoading == true) {
         return const Scaffold(

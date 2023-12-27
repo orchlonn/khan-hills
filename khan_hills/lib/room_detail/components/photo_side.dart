@@ -54,17 +54,17 @@ class _PhotoSideState extends State<PhotoSide> {
             ),
             widget.rooms.data[0].room.length == 3
                 ? ThreeCirlce(
-                    urlPhoto: widget.urlPhoto,
+                    urlPhoto: widget.rooms.data[0].planImg,
                     rooms: widget.rooms,
                   )
                 : widget.rooms.data[0].room.length == 4
                     ? FourCircle(
-                        urlPhoto: widget.urlPhoto,
+                        urlPhoto: widget.rooms.data[0].planImg,
                         rooms: widget.rooms,
                       )
                     : widget.rooms.data[0].room.length == 5
                         ? FiveCircle(
-                            urlPhoto: widget.urlPhoto,
+                            urlPhoto: widget.rooms.data[0].planImg,
                             rooms: widget.rooms,
                           )
                         : Container(),
